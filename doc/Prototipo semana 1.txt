@@ -1,0 +1,60 @@
+Prototipo semana 1
+==================
+
+09/11/2023
+
+Objetivo:
+
+Ampliar el prototipo de pollosprimos. El punto de partida es el código del proyecto en el siguiente repositorio:
+
+Pasos a seguir...
+
+1.- Eliminamos el proyecto anterior (ojo con el checkbox! Tenemos que eliminar contenidos del disco)
+2.- Cloneamos el proyecto de nuevo en la carpeta DESARROLLO_BACKEND (o descargamos el ZIP de github)
+
+	git clone https://github.com/rauxasoft/11_2023_pollosprimos
+
+3.- Importamos el proyecto en Eclipse: import... existing Maven projects
+
+==============================================================================================
+
+1.- Crear un interface para gestión de establecimientos
+
+- crear un establecimiento
+- obtener un establecimiento a partir de su código
+- obtener un listado de todos los establecimientos
+- obtener un listado de todos los establecimientos cuyo nombre contenga un texto dado (ignorando mayus/minusc)
+
+2.- Crear un interface para gestión de clientes
+
+- obtener un cliente a partir del id
+- obtener un listado de todos los clientes
+
+3.- Crear implementaciones de los interfaces
+
+- Los datos se "guardarán" en una colección en memoria
+- Habrán algunos datos de ejemplo
+
+4.- Realizar pruebas manuales en una clase TestClass
+
+5.- [OPCIONAL] Realizar pruebas unitarias con JUnit
+
+Entrega
+=======
+
+- Cada fichero en el que vais a trabajar debe contener un comentario con vuestro nombren y número de usuario.
+
+Ejemplo:
+
+// Pepín Gálvez Ridruejo
+// viewnext108
+
+- Se entregarán únicamente los ficheros en los que habéis estado trabajando en una carpeta que os indicaré más adelante.
+
+Se tienen en cuenta
+===================
+
+- Clean code! Espacios en blanco, espacio a izquierda y derecha de operadores, buen nombrado de variables, no warnings, etc...
+
+
+
