@@ -8,11 +8,14 @@ import java.util.Map;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.sinensia.pollosprimos.backend.business.model.Camarero;
 import com.sinensia.pollosprimos.backend.business.model.DatosContacto;
 import com.sinensia.pollosprimos.backend.business.model.Direccion;
 import com.sinensia.pollosprimos.backend.business.services.CamareroServices;
 
+@Service
 public class CamareroServicesImpl implements CamareroServices {
 
 	private final Map<Long, Camarero> CAMAREROS = new HashMap<>();
@@ -77,6 +80,18 @@ public class CamareroServicesImpl implements CamareroServices {
 		
 		CAMAREROS.replace(id, camarero);
 		
+	}
+	
+	@Override
+	public void delete(Long id) {
+		
+		boolean existe = CAMAREROS.containsKey(id);
+		
+		if(!existe) {
+			throw new IllegalStateException("No se puede eliminar el camarero " + id + ". No existe!");
+		}
+		
+		CAMAREROS.remove(id);
 	}
 
 	@Override
@@ -153,5 +168,4 @@ public class CamareroServicesImpl implements CamareroServices {
 		CAMAREROS.put(camarero2.getId(), camarero2);
 		
 	}
-
 }

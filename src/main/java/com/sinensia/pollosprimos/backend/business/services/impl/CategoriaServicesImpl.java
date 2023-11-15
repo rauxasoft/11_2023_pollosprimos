@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+import org.springframework.stereotype.Service;
+
 import com.sinensia.pollosprimos.backend.business.model.Categoria;
 import com.sinensia.pollosprimos.backend.business.services.CategoriaServices;
 
+@Service
 public class CategoriaServicesImpl implements CategoriaServices {
 
 	private final TreeMap<Long, Categoria> CATEGORIAS = new TreeMap<>();

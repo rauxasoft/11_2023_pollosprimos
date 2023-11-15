@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "65738b67-8994-48f0-9506-c3c0bdc057b7",
+		"name": "POLLOS PRIMOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1059617"
+	},
+	"item": [
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Obtener todas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"CATEGORIA CREADA DESDE POSTMAN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Camareros",
+			"item": [
+				{
+					"name": "Obtener todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/camareros",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"camareros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": \"45981112R\",\r\n    \"nombre\": \"Andujar\",\r\n    \"apellido1\": \"Oliver\",\r\n    \"apellido2\": \"Martínez\",\r\n    \"direccion\": {\r\n        \"direccion\": \"Avda. de la Luz, 340\",\r\n        \"poblacion\": \"Santa Perpetua de Mogoda\",\r\n        \"codigoPostal\": \"08034\",\r\n        \"provincia\": \"Barcelona\",\r\n        \"pais\": \"España\"\r\n    },\r\n    \"datosContacto\": {\r\n        \"telefono\": \"+34 650908912\",\r\n        \"fax\": null,\r\n        \"email\": \"andujaroliver@gmail.com\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/camareros",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"camareros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/camareros/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"camareros",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 10,\r\n    \"dni\": \"49923212R\",\r\n    \"nombre\": \"*****Pepín\",\r\n    \"apellido1\": \"*****Gálvez\",\r\n    \"apellido2\": \"*****Ridruejo\",\r\n    \"direccion\": {\r\n        \"direccion\": \"****Avda. de la Luz, 230\",\r\n        \"poblacion\": \"*****Santa Perpetua de Mogoda\",\r\n        \"codigoPostal\": \"08034\",\r\n        \"provincia\": \"Barcelona\",\r\n        \"pais\": \"****España\"\r\n    },\r\n    \"datosContacto\": {\r\n        \"telefono\": \"+****34 6209087\",\r\n        \"fax\": null,\r\n        \"email\": \"******pepin893@gmail.com\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/camareros/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"camareros",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/camareros/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"camareros",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

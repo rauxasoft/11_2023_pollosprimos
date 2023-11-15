@@ -25,6 +25,8 @@ public interface CamareroServices {
 	 */
 	void update(Camarero camarero);				// U
 	
+	void delete(Long id);						// D
+	
 	List<Camarero> getAll();
 	List<Camarero> getByNombreLikeIgnoreCase(String texto);
 	

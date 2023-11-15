@@ -8,10 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.sinensia.pollosprimos.backend.business.model.Categoria;
 import com.sinensia.pollosprimos.backend.business.model.Producto;
 import com.sinensia.pollosprimos.backend.business.services.ProductoServices;
 
+@Service
 public class ProductoServicesImpl implements ProductoServices{
 
 	private final Map<Long, Producto> PRODUCTOS = new HashMap<>();
