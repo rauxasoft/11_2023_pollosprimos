@@ -1,6 +1,7 @@
 package com.sinensia.pollosprimos.backend.business.services.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +28,7 @@ public class ProductoServicesImpl implements ProductoServices{
 
 	@Override
 	public Optional<Producto> read(Long codigo) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		return Optional.ofNullable(PRODUCTOS.get(codigo));
 	}
 
 	@Override
@@ -39,8 +39,7 @@ public class ProductoServicesImpl implements ProductoServices{
 
 	@Override
 	public List<Producto> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<>(PRODUCTOS.values());
 	}
 
 	@Override
@@ -133,25 +132,51 @@ public class ProductoServicesImpl implements ProductoServices{
 		Date fecha1 = null;
 		Date fecha2 = null;
 		Date fecha3 = null;
-		Date fecha4 = null;
-		Date fecha5 = null;
+		
+		Categoria c1 = new Categoria();
+		Categoria c2 = new Categoria();
+		
+		c1.setId(1000L);
+		c2.setId(1001L);
+		c1.setNombre("TAPAS");
+		c2.setNombre("REFRESCOS");
 		
 		try {
 			fecha1 = sdf.parse("01/01/2015");
 			fecha2 = sdf.parse("02/01/2015");
 			fecha3 = sdf.parse("03/01/2015");
-			fecha4 = sdf.parse("04/01/2015");
-			fecha5 = sdf.parse("05/01/2015");
 		} catch(Exception e) {
 			
 		}
 		
 		Producto producto1 = new Producto();
-		producto1.setCodigo(100L);
+		producto1.setCodigo(101L);
 		producto1.setFechaAlta(fecha1);
+		producto1.setCategoria(c1);
+		producto1.setNombre("Patatas Bravas de la Barceloneta");
+		producto1.setPrecio(4.5);
+		producto1.setDescripcion("Deliciosas patatas al punto picante. Pican de verdad!");
+	
+		Producto producto2 = new Producto();
+		producto2.setCodigo(102L);
+		producto2.setFechaAlta(fecha2);
+		producto2.setCategoria(c1);
+		producto2.setNombre("Bomba de la Barceloneta");
+		producto2.setPrecio(6.5);
+		producto2.setDescripcion("Deliciosas patatas rellenas con carne muy picante. Pican de verdad!");
+		producto2.setDescatalogado(true);
 		
+		Producto producto3 = new Producto();
+		producto3.setCodigo(103L);
+		producto3.setFechaAlta(fecha3);
+		producto3.setCategoria(c2);
+		producto3.setNombre("Cocacola Zero");
+		producto3.setPrecio(4.5);
+		producto3.setDescripcion("Cocacola Zero sin azucar");
 		
-		// TODO Auto-generated method stub
+		PRODUCTOS.put(producto1.getCodigo(), producto1);
+		PRODUCTOS.put(producto2.getCodigo(), producto2);
+		PRODUCTOS.put(producto3.getCodigo(), producto3);
 		
 	}
 	
