@@ -85,25 +85,5 @@ public class CamareroController {
 			throw new PresentationException(e.getMessage(), HttpStatus.NOT_FOUND); // RESPUESTA	
 		}
 	}
-		
-	// **************************************************************************************
-/*	
-	@ExceptionHandler(PresentationException.class)
-	public ResponseEntity<?> gestionarPresentationException(PresentationException ex){
-		RespuestaErrorHttp respuesta = new RespuestaErrorHttp(ex.getMessage());
-		return new ResponseEntity<>(respuesta, ex.getHttpStatus());
-	}
-	
-	@ExceptionHandler(Exception.class)
-    public ResponseEntity<?> gestionarException (Exception ex) {
-		RespuestaErrorHttp respuesta = new RespuestaErrorHttp(ex.getMessage());
-        return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-	
-	@ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<?> gestionarExceptionparse (Exception ex) {
-		RespuestaErrorHttp respuesta = new RespuestaErrorHttp(ex.getMessage());
-        return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
-    }
-*/	
+
 }
