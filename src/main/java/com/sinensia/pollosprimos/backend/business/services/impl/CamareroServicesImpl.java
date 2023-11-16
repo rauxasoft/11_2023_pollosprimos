@@ -69,7 +69,7 @@ public class CamareroServicesImpl implements CamareroServices {
 		Long id = camarero.getId();
 		
 		if(id == null) {
-			throw new IllegalStateException("No se puede actualizar un camarero con id null");
+			throw new IllegalArgumentException("No se puede actualizar un camarero con id null");
 		}
 		
 		boolean existe = CAMAREROS.containsKey(id);
