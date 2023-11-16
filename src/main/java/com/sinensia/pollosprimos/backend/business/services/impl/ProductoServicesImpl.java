@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -47,8 +48,10 @@ public class ProductoServicesImpl implements ProductoServices{
 
 	@Override
 	public List<Producto> getBetweenPriceRange(double min, double max) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return PRODUCTOS.values().stream()
+				.filter(x -> x.getPrecio() >= min && x.getPrecio() <= max)
+				.collect(Collectors.toList());
 	}
 
 	@Override

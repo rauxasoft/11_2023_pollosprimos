@@ -6,9 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +20,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.sinensia.pollosprimos.backend.business.model.Camarero;
 import com.sinensia.pollosprimos.backend.business.services.CamareroServices;
 import com.sinensia.pollosprimos.backend.presentation.config.PresentationException;
-import com.sinensia.pollosprimos.backend.presentation.config.RespuestaErrorHttp;
 
 @RestController
 @RequestMapping("/camareros")
@@ -35,10 +32,6 @@ public class CamareroController {
 	public List<Camarero> getAll(){
 		return camareroServices.getAll();
 	}
-	
-	
-	
-	
 	
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody Camarero camarero, UriComponentsBuilder ucb) {
@@ -94,7 +87,7 @@ public class CamareroController {
 	}
 		
 	// **************************************************************************************
-	
+/*	
 	@ExceptionHandler(PresentationException.class)
 	public ResponseEntity<?> gestionarPresentationException(PresentationException ex){
 		RespuestaErrorHttp respuesta = new RespuestaErrorHttp(ex.getMessage());
@@ -112,5 +105,5 @@ public class CamareroController {
 		RespuestaErrorHttp respuesta = new RespuestaErrorHttp(ex.getMessage());
         return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
     }
-	
+*/	
 }
