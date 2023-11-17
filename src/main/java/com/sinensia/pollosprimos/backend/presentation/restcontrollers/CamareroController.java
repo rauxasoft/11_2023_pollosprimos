@@ -54,7 +54,7 @@ public class CamareroController {
 		Optional<Camarero> optional = camareroServices.read(id);
 		
 		if(optional.isEmpty()) {
-			throw new PresentationException("No se encuentra el camarero con id " + id, HttpStatus.NOT_FOUND); // RESPUESTA	
+			throw new PresentationException("No se encuentra el camarero con id " + id, HttpStatus.NOT_FOUND);
 		} 
 		
 		return optional.get();		
@@ -68,10 +68,8 @@ public class CamareroController {
 		
 		try {
 			camareroServices.update(camarero);
-		} catch(IllegalArgumentException e) {
-			throw new PresentationException(e.getMessage(), HttpStatus.BAD_REQUEST); // RESPUESTA	
 		} catch(IllegalStateException e) {
-			throw new PresentationException(e.getMessage(), HttpStatus.NOT_FOUND); // RESPUESTA	
+			throw new PresentationException(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 
