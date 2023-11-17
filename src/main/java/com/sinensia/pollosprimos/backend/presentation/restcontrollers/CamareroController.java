@@ -41,7 +41,7 @@ public class CamareroController {
 		try {
 			id = camareroServices.create(camarero);
 		} catch(IllegalStateException e) {
-			throw new PresentationException(e.getMessage(), HttpStatus.BAD_REQUEST); // RESPUESTA	
+			throw new PresentationException(e.getMessage(), HttpStatus.BAD_REQUEST);	
 		}
 				
 		return ResponseEntity.created(ucb.path("/camareros/{id}").build(id))
