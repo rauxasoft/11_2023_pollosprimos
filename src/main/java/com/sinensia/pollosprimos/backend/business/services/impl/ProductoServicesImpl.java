@@ -4,16 +4,30 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.pollosprimos.backend.business.model.Categoria;
 import com.sinensia.pollosprimos.backend.business.model.Producto;
 import com.sinensia.pollosprimos.backend.business.services.ProductoServices;
+import com.sinensia.pollosprimos.backend.integration.model.CategoriaPL;
+import com.sinensia.pollosprimos.backend.integration.model.ProductoPL;
+import com.sinensia.pollosprimos.backend.integration.repositories.ProductoPLRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class ProductoServicesImpl implements ProductoServices {
 
+	@Autowired
+	private ProductoPLRepository productoPLRepository;
+	
+	@Autowired
+	private DozerBeanMapper mapper;
+	
 	@Override
 	public Long create(Producto producto) {
 		// TODO Auto-generated method stub
@@ -44,45 +58,59 @@ public class ProductoServicesImpl implements ProductoServices {
 	@Override
 	public List<Producto> getBetweenPriceRange(double min, double max) {
 		
-		// LUEGO
+		List<ProductoPL> productosPL = productoPLRepository.findByPrecioBetweenOrderByPrecio(min, max);
 		
-		// TODO Auto-generated method stub
-		return null;
+		return productosPL.stream()
+				.map(x -> mapper.map(x, Producto.class))
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Producto> getBetweenDates(Date desde, Date hasta) {
 		
-		// LUEGO
+		List<ProductoPL> productosPL = productoPLRepository.findByFechaAltaBetweenOrderByFechaAlta(desde, hasta);
 		
-		// TODO Auto-generated method stub
-		return null;
+		return productosPL.stream()
+				.map(x -> mapper.map(x, Producto.class))
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Producto> getDescatalogados() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<ProductoPL> productosPL = productoPLRepository.findByDescatalogadoTrue();
+		
+		return productosPL.stream()
+				.map(x -> mapper.map(x, Producto.class))
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Producto> getByCategoria(Categoria categoria) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		CategoriaPL categoriaPL = mapper.map(categoria, CategoriaPL.class);
+		
+		List<ProductoPL> productosPL = productoPLRepository.findByCategoria(categoriaPL);
+		
+		return productosPL.stream()
+				.map(x -> mapper.map(x, Producto.class))
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public int getNumeroTotalProductos() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) productoPLRepository.count();
 	}
 
 	@Override
+	@Transactional
 	public void variarPrecio(List<Producto> productos, double porcentaje) {
 	
-		// LUEGO
+		List<ProductoPL> productosPL = productos.stream()
+				.map(x -> mapper.map(x, ProductoPL.class))
+				.collect(Collectors.toList());
 		
-		// TODO Auto-generated method stub
+		productoPLRepository.variarPrecio(productosPL, porcentaje);
 		
 	}
 
