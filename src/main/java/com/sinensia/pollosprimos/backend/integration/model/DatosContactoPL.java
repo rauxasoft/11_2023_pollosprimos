@@ -1,15 +1,18 @@
-package com.sinensia.pollosprimos.backend.business.model;
+package com.sinensia.pollosprimos.backend.integration.model;
 
 import java.io.Serializable;
 
-public class DatosContacto implements Serializable{
+import jakarta.persistence.Embeddable;
+
+@Embeddable
+public class DatosContactoPL implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String telefono;
 	private String fax;
 	private String email;
 	
-	public DatosContacto() {
+	public DatosContactoPL() {
 		
 	}
 

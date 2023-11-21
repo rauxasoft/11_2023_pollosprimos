@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sinensia.pollosprimos.backend.business.model.Camarero;
-import com.sinensia.pollosprimos.backend.business.model.Cliente;
-import com.sinensia.pollosprimos.backend.business.model.Establecimiento;
-import com.sinensia.pollosprimos.backend.business.model.Pedido;
+import com.sinensia.pollosprimos.backend.integration.model.CamareroPL;
 import com.sinensia.pollosprimos.backend.integration.model.CategoriaPL;
+import com.sinensia.pollosprimos.backend.integration.model.ClientePL;
+import com.sinensia.pollosprimos.backend.integration.model.EstablecimientoPL;
+import com.sinensia.pollosprimos.backend.integration.model.PedidoPL;
 import com.sinensia.pollosprimos.backend.integration.model.ProductoPL;
-import com.sinensia.pollosprimos.backend.integration.repositories.CamareroRepository;
+import com.sinensia.pollosprimos.backend.integration.repositories.CamareroPLRepository;
 import com.sinensia.pollosprimos.backend.integration.repositories.CategoriaPLRepository;
-import com.sinensia.pollosprimos.backend.integration.repositories.ClienteRepository;
-import com.sinensia.pollosprimos.backend.integration.repositories.EstablecimientoRepository;
-import com.sinensia.pollosprimos.backend.integration.repositories.PedidoRepository;
+import com.sinensia.pollosprimos.backend.integration.repositories.ClientePLRepository;
+import com.sinensia.pollosprimos.backend.integration.repositories.EstablecimientoPLRepository;
+import com.sinensia.pollosprimos.backend.integration.repositories.PedidoPLRepository;
 import com.sinensia.pollosprimos.backend.integration.repositories.ProductoPLRepository;
 
 @RestController
@@ -31,35 +31,35 @@ public class BorrameController {
 	private ProductoPLRepository productoPLRepository;
 	
 	@Autowired
-	private EstablecimientoRepository establecimientoRepository;
+	private EstablecimientoPLRepository establecimientoPLRepository;
 	
 	@Autowired
-	private ClienteRepository clienteRepository;
+	private ClientePLRepository clientePLRepository;
 	
 	@Autowired
-	private CamareroRepository camareroRepository;
+	private CamareroPLRepository camareroPLRepository;
 	
 	@Autowired
-	private PedidoRepository pedidoRepository;
+	private PedidoPLRepository pedidoPLRepository;
 	
 	@GetMapping("/pedidos")
-	public List<Pedido> getPedidos(){
-		return pedidoRepository.findAll();
+	public List<PedidoPL> getPedidos(){
+		return pedidoPLRepository.findAll();
 	}
 	
 	@GetMapping("/camareros")
-	public List<Camarero> getCamareros(){
-		return camareroRepository.findAll();
+	public List<CamareroPL> getCamareros(){
+		return camareroPLRepository.findAll();
 	}
 	
 	@GetMapping("/clientes")
-	public List<Cliente> getClientes(){
-		return clienteRepository.findAll();
+	public List<ClientePL> getClientes(){
+		return clientePLRepository.findAll();
 	}
 	
 	@GetMapping("/establecimientos")
-	public List<Establecimiento> getEstablecimientos(){
-		return establecimientoRepository.findAll();
+	public List<EstablecimientoPL> getEstablecimientos(){
+		return establecimientoPLRepository.findAll();
 	}
 	
 	@GetMapping("/productos")

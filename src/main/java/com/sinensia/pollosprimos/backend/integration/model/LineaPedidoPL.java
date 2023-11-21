@@ -1,23 +1,31 @@
-package com.sinensia.pollosprimos.backend.business.model;
+package com.sinensia.pollosprimos.backend.integration.model;
 
 import java.io.Serializable;
 
-public class LineaPedido implements Serializable {
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Embeddable
+public class LineaPedidoPL implements Serializable {
 	private static final long serialVersionUID = 1L;
+
+	@ManyToOne
+	@JoinColumn(name="CODIGO_PRODUCTO")
+	private ProductoPL producto;
 	
-	private Producto producto;
 	private int cantidad;      
 	private double precio;
 	
-	public LineaPedido() {
+	public LineaPedidoPL() {
 		
 	}
 
-	public Producto getProducto() {
+	public ProductoPL getProducto() {
 		return producto;
 	}
 
-	public void setProducto(Producto producto) {
+	public void setProducto(ProductoPL producto) {
 		this.producto = producto;
 	}
 
