@@ -4,13 +4,30 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
+@Entity
+@Table(name="ESTABLECIMIENTOS")
 public class Establecimiento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private Long codigo;
+	
 	private String nombreComercial;
+	
+	@Embedded
 	private Direccion direccion;
+	
+	@Embedded
 	private DatosContacto datosContacto;
+	
+	@Temporal(TemporalType.DATE)
 	private Date fechaInauguracion;
 	
 	public Establecimiento() {

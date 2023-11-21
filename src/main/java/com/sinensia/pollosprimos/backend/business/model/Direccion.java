@@ -2,6 +2,9 @@ package com.sinensia.pollosprimos.backend.business.model;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class Direccion implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

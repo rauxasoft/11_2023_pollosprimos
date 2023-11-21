@@ -3,15 +3,33 @@ package com.sinensia.pollosprimos.backend.business.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="PERSONAS")
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@Column(name="CODIGO")
 	private Long id;
+	
 	private String dni;
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
+	
+	@Embedded
 	private Direccion direccion;
+	
+	@Embedded
 	private DatosContacto datosContacto;
 	
 	public Persona() {
