@@ -3,14 +3,12 @@ package com.sinensia.pollosprimos.backend.business.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.pollosprimos.backend.business.model.Camarero;
 import com.sinensia.pollosprimos.backend.business.services.CamareroServices;
 
 @Service
-@Primary
 public class CamareroServicesImpl implements CamareroServices {
 
 	@Override
@@ -27,12 +25,18 @@ public class CamareroServicesImpl implements CamareroServices {
 
 	@Override
 	public Optional<Camarero> read(String dni) {
+		
+		// LUEGO
+		
 		// TODO Auto-generated method stub
 		return Optional.empty();
 	}
 
 	@Override
 	public void update(Camarero camarero) {
+		
+		// LUEGO
+		
 		// TODO Auto-generated method stub
 		
 	}
@@ -51,6 +55,9 @@ public class CamareroServicesImpl implements CamareroServices {
 
 	@Override
 	public List<Camarero> getByNombreLikeIgnoreCase(String texto) {
+		
+		// LUEGO
+		
 		// TODO Auto-generated method stub
 		return null;
 	}

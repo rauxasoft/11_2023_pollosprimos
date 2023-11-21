@@ -5,23 +5,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.pollosprimos.backend.business.model.Categoria;
 import com.sinensia.pollosprimos.backend.business.model.Producto;
 import com.sinensia.pollosprimos.backend.business.services.ProductoServices;
-import com.sinensia.pollosprimos.backend.integration.model.ProductoPL;
-import com.sinensia.pollosprimos.backend.integration.repositories.ProductoPLRepository;
 
 @Service
-@Primary
 public class ProductoServicesImpl implements ProductoServices {
 
-	@Autowired
-	private ProductoPLRepository productoPLRepository;
-	
 	@Override
 	public Long create(Producto producto) {
 		// TODO Auto-generated method stub
@@ -36,26 +28,33 @@ public class ProductoServicesImpl implements ProductoServices {
 
 	@Override
 	public void update(Producto producto) {
+		
+		// LUEGO
+		
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public List<Producto> getAll() {
-		
-		List<ProductoPL> productosPL = productoPLRepository.findAll();
-		
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Producto> getBetweenPriceRange(double min, double max) {
+		
+		// LUEGO
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Producto> getBetweenDates(Date desde, Date hasta) {
+		
+		// LUEGO
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -80,6 +79,9 @@ public class ProductoServicesImpl implements ProductoServices {
 
 	@Override
 	public void variarPrecio(List<Producto> productos, double porcentaje) {
+	
+		// LUEGO
+		
 		// TODO Auto-generated method stub
 		
 	}
@@ -92,12 +94,18 @@ public class ProductoServicesImpl implements ProductoServices {
 
 	@Override
 	public Map<Categoria, Integer> getEstadisticaNumeroProductoPorCategoria() {
+		
+		// LUEGO
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Map<Categoria, Double> getEstadisticaPrecioMedioProductosPorCategoria() {
+		
+		// LUEGO
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
