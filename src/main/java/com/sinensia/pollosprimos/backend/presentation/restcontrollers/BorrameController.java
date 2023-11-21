@@ -8,27 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sinensia.pollosprimos.backend.business.model.Camarero;
-import com.sinensia.pollosprimos.backend.business.model.Categoria;
 import com.sinensia.pollosprimos.backend.business.model.Cliente;
 import com.sinensia.pollosprimos.backend.business.model.Establecimiento;
 import com.sinensia.pollosprimos.backend.business.model.Pedido;
-import com.sinensia.pollosprimos.backend.business.model.Producto;
+import com.sinensia.pollosprimos.backend.integration.model.CategoriaPL;
+import com.sinensia.pollosprimos.backend.integration.model.ProductoPL;
 import com.sinensia.pollosprimos.backend.integration.repositories.CamareroRepository;
-import com.sinensia.pollosprimos.backend.integration.repositories.CategoriaRepository;
+import com.sinensia.pollosprimos.backend.integration.repositories.CategoriaPLRepository;
 import com.sinensia.pollosprimos.backend.integration.repositories.ClienteRepository;
 import com.sinensia.pollosprimos.backend.integration.repositories.EstablecimientoRepository;
 import com.sinensia.pollosprimos.backend.integration.repositories.PedidoRepository;
-import com.sinensia.pollosprimos.backend.integration.repositories.ProductoRepository;
+import com.sinensia.pollosprimos.backend.integration.repositories.ProductoPLRepository;
 
 @RestController
 @RequestMapping("/pruebas")
 public class BorrameController {
 
 	@Autowired
-	private CategoriaRepository categoriaRepository;
+	private CategoriaPLRepository categoriaPLRepository;
 	
 	@Autowired
-	private ProductoRepository productoRepository;
+	private ProductoPLRepository productoPLRepository;
 	
 	@Autowired
 	private EstablecimientoRepository establecimientoRepository;
@@ -63,12 +63,12 @@ public class BorrameController {
 	}
 	
 	@GetMapping("/productos")
-	public List<Producto> getProductos(){
-		return productoRepository.findAll();
+	public List<ProductoPL> getProductos(){
+		return productoPLRepository.findAll();
 	}
 	
 	@GetMapping("/categorias")
-	public List<Categoria> getCategorias(){
-		return categoriaRepository.findAll();
+	public List<CategoriaPL> getCategorias(){
+		return categoriaPLRepository.findAll();
 	}
 }

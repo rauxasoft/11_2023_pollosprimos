@@ -1,15 +1,23 @@
-package com.sinensia.pollosprimos.backend.business.model;
+package com.sinensia.pollosprimos.backend.integration.model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Categoria implements Serializable {
-	private static final long serialVersionUID = 1L;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-	private Long id;	
+@Entity
+@Table(name="CATEGORIAS")
+public class CategoriaPL implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	private Long id;
+	
 	private String nombre;
 	
-	public Categoria() {
+	public CategoriaPL() {
 		
 	}
 
@@ -45,13 +53,12 @@ public class Categoria implements Serializable {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Categoria other = (Categoria) obj;
+		CategoriaPL other = (CategoriaPL) obj;
 		return Objects.equals(id, other.id);
 	}
 
 	@Override
 	public String toString() {
-		return "Categoria [id=" + id + ", nombre=" + nombre + "]";
+		return "CategoriaPL [id=" + id + ", nombre=" + nombre + "]";
 	}
-
 }
