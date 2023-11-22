@@ -1,5 +1,4 @@
 package com.sinensia.pollosprimos.backend.presentation.restcontrollers;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sinensia.pollosprimos.backend.business.model.Categoria;
 import com.sinensia.pollosprimos.backend.business.model.Producto;
 import com.sinensia.pollosprimos.backend.business.services.ProductoServices;
+import com.sinensia.pollosprimos.backend.integration.repositories.CamareroPLRepository;
 
 @RestController
 @RequestMapping("/pruebas")
@@ -18,6 +18,20 @@ public class BorrameController {
 
 	@Autowired
 	private ProductoServices productoServices;
+	
+	@Autowired
+	private CamareroPLRepository camareroPLRepository;
+	
+	@GetMapping("/camareros")
+	public Object pruebasCamareroRepository() {
+		
+		//return camareroPLRepository.dameTodos();
+		// return camareroPLRepository.damePorTelefono("932209012");
+		
+		return camareroPLRepository.findByNombreLikeIgnoreCase("rA");
+		
+		
+	}
 	
 	@GetMapping("/productos-incrementar")
 	public String prueba6(){
@@ -52,6 +66,48 @@ public class BorrameController {
 	@GetMapping("/productos-filtrados-por-precio")
 	public List<Producto> prueba2(){
 		return productoServices.getBetweenPriceRange(2.5, 3.0);
+	}
+	
+	static class DatosSueltos2{
+		
+		private int numeroCaractares;
+		private int sumaDeDosMasDos;
+		private String nombreMayusculizado;
+		
+		public DatosSueltos2(int numeroCaractares, int sumaDeDosMasDos, String nombreMayusculizado) {
+			super();
+			this.numeroCaractares = numeroCaractares;
+			this.sumaDeDosMasDos = sumaDeDosMasDos;
+			this.nombreMayusculizado = nombreMayusculizado;
+		}
+
+		public int getNumeroCaractares() {
+			return numeroCaractares;
+		}
+
+		public void setNumeroCaractares(int numeroCaractares) {
+			this.numeroCaractares = numeroCaractares;
+		}
+
+		public int getSumaDeDosMasDos() {
+			return sumaDeDosMasDos;
+		}
+
+		public void setSumaDeDosMasDos(int sumaDeDosMasDos) {
+			this.sumaDeDosMasDos = sumaDeDosMasDos;
+		}
+
+		public String getNombreMayusculizado() {
+			return nombreMayusculizado;
+		}
+
+		public void setNombreMayusculizado(String nombreMayusculizado) {
+			this.nombreMayusculizado = nombreMayusculizado;
+		}
+		
+		
+		
+		
 	}
 	
 }
