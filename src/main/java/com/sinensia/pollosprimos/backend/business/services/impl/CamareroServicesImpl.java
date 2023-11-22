@@ -105,7 +105,7 @@ public class CamareroServicesImpl implements CamareroServices {
 		boolean existe = camareroPLRepository.existsById(id);
 		
 		if(!existe) {
-			throw new IllegalStateException("El camarero con id " + id + " no exisxte. No se puede eliminar");
+			throw new IllegalStateException("El camarero con id " + id + " no existe. No se puede eliminar");
 		}
 		
 		camareroPLRepository.deleteById(id);
