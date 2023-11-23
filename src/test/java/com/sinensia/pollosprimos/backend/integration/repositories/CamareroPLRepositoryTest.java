@@ -44,7 +44,7 @@ public class CamareroPLRepositoryTest {
 		
 		assertNotNull(camareroPL1);
 		assertEquals(11L, camareroPL1.getId());
-		assertEquals("José Ramón", camareroPL1.getNombre());
+		assertEquals("Jose", camareroPL1.getNombre());
 		
 		assertNull(camareroPL2);
 	}
