@@ -83,14 +83,16 @@ public class CamareroServicesImpl implements CamareroServices {
 	@Transactional
 	public void update(Camarero camarero) {
 		
-		if(camarero.getId() == null) {
+		Long id = camarero.getId();
+		
+		if(id == null) {
 			throw new IllegalStateException("No se puede actualizar un camarero con id null");
 		}
 		
-		boolean existe = camareroPLRepository.existsById(camarero.getId());
+		boolean existe = camareroPLRepository.existsById(id);
 		
 		if(!existe) {
-			throw new IllegalStateException("El camarero " + camarero.getId() + " no existe. No se puede actualizar");
+			throw new IllegalStateException("El camarero " + id + " no existe. No se puede actualizar");
 		}
 		
 		CamareroPL camareroPL = mapper.map(camarero, CamareroPL.class);

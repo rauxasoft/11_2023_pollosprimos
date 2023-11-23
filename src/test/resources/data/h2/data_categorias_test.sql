@@ -1,0 +1,13 @@
+INSERT INTO CATEGORIAS (ID, NOMBRE) VALUES
+(1, 'LICOR'),
+(2, 'REFRESCO'),
+(3, 'CERVEZA'),
+(4, 'TAPA'),
+(5, 'COMIDA'),
+(6, 'POSTRE'),
+(7, 'AGUA'),
+(8, 'INFUSION'),
+(9, 'BOCADILLO'),
+(10, 'CAFE'),
+(11, 'BOLLERIA'),
+(12, 'ZUMO');

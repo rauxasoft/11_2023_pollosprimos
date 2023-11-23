@@ -36,7 +36,6 @@ public class CamareroServicesImplTest {
 	
 	private CamareroPL camareroPL1;
 	private CamareroPL camareroPL2;
-	
 	private Camarero camarero1;
 	private Camarero camarero2;
 	
@@ -46,7 +45,7 @@ public class CamareroServicesImplTest {
 	}
 	
 	@Test
-	void creamos_camarero_ok() {
+	void create_camarero_ok() {
 		
 		camarero1.setId(null);
 		camarero1.setDni("11111111R");
@@ -65,7 +64,7 @@ public class CamareroServicesImplTest {
 	}
 	
 	@Test
-	void creamos_camarero_con_id_NO_null() {
+	void create_camarero_con_id_NO_null() {
 	
 		Exception exception = assertThrows(IllegalStateException.class, ()->{
 			camareroServicesImpl.create(camarero1);
@@ -75,7 +74,7 @@ public class CamareroServicesImplTest {
 	}
 	
 	@Test
-	void creamos_camarero_con_dni_NULL() {
+	void create_camarero_con_dni_NULL() {
 	
 		camarero1.setId(null);
 		camarero1.setDni(null);
@@ -89,7 +88,7 @@ public class CamareroServicesImplTest {
 	}
 	
 	@Test
-	void creamos_camarero_con_dni_EXISTENTE() {
+	void create_camarero_con_dni_EXISTENTE() {
 		
 		camarero1.setId(null);
 		camarero1.setDni("11111111R");
@@ -186,7 +185,7 @@ public class CamareroServicesImplTest {
 	
 	
 	@Test
-	void eliminamos_camarero_ok() {
+	void delete_camarero_ok() {
 		
 		when(camareroPLRepository.existsById(45L)).thenReturn(true);
 		
@@ -196,7 +195,7 @@ public class CamareroServicesImplTest {
 	}
 	
 	@Test
-	void eliminamos_camarero_inexistente() {
+	void delete_camarero_inexistente() {
 		
 		when(camareroPLRepository.existsById(45L)).thenReturn(false);
 		
@@ -208,7 +207,7 @@ public class CamareroServicesImplTest {
 	}
 	
 	@Test
-	void obtenemos_todos() {
+	void getAll() {
 		
 		List<CamareroPL> camarerosPL = List.of(camareroPL1, camareroPL2);
 		
@@ -223,7 +222,7 @@ public class CamareroServicesImplTest {
 	}
 	
 	@Test
-	void obtenemos_by_nombre_like_ignore_case() {
+	void getByNombreLikeIgnoreCase() {
 		
 		List<CamareroPL> camarerosPL = List.of(camareroPL1, camareroPL2);
 		
@@ -238,7 +237,7 @@ public class CamareroServicesImplTest {
 	}
 	
 	@Test
-	void obtenemos_numero_total_camareros() {
+	void getNumeroTotalCamareros() {
 		
 		when(camareroPLRepository.count()).thenReturn(23L);
 		

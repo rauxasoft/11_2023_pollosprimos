@@ -1,3 +1,4 @@
+/*
 INSERT INTO CATEGORIAS (ID, NOMBRE) VALUES
 (1, 'LICOR'),
 (2, 'REFRESCO'),
@@ -11,7 +12,7 @@ INSERT INTO CATEGORIAS (ID, NOMBRE) VALUES
 (10, 'CAFE'),
 (11, 'BOLLERIA'),
 (12, 'ZUMO');
-
+*/
 INSERT INTO PRODUCTOS (CODIGO, NOMBRE, DESCRIPCION, FECHA_ALTA, PRECIO, DESCATALOGADO, ID_CATEGORIA) VALUES
 (100,'Patatas Bravas', 'Deliciosas patatas bravas de verdad', '2017-10-21', 6.0, FALSE, 4),
 (101,'Patatas Bravas XXL', 'Deliciosas patatas bravas de verdad King Size', '2017-10-23', 9.0, FALSE, 4),
