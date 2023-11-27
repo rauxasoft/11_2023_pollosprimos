@@ -19,6 +19,27 @@
    	<mapping>
    		<class-a>com.sinensia.pollosprimos.backend.business.model.Producto</class-a>
    		<class-b>com.sinensia.pollosprimos.backend.integration.model.ProductoPL</class-b>
-   	</mapping>    
+   	</mapping>
+   	
+   	<mapping>
+   		<class-a>com.sinensia.pollosprimos.backend.business.model.Establecimiento</class-a>
+   		<class-b>com.sinensia.pollosprimos.backend.integration.model.EstablecimientoPL</class-b>
+   	</mapping> 
+   	
+   	<mapping>
+   		<class-a>com.sinensia.pollosprimos.backend.business.model.Cliente</class-a>
+   		<class-b>com.sinensia.pollosprimos.backend.integration.model.ClientePL</class-b>
+   	</mapping> 
+   	
+   	<mapping>
+   		<class-a>com.sinensia.pollosprimos.backend.business.model.LineaPedido</class-a>
+   		<class-b>com.sinensia.pollosprimos.backend.integration.model.LineaPedidoPL</class-b>
+   	</mapping>
+   	
+   	<mapping>
+   		<class-a>com.sinensia.pollosprimos.backend.business.model.Pedido</class-a>
+   		<class-b>com.sinensia.pollosprimos.backend.integration.model.PedidoPL</class-b>
+   	</mapping>
+   	
                 
  </mappings>

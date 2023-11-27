@@ -1,6 +1,7 @@
 package com.sinensia.pollosprimos.backend.business.services;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.sinensia.pollosprimos.backend.business.model.Pedido;
@@ -10,6 +11,10 @@ public interface PedidoServices {
 	Long create(Pedido pedido);
 	
 	Optional<Pedido> read(Long numero);
+	
+	void update(Long numerPedido, Map<String, Object> atributos);
+	
+	void update(Pedido pedido);
 	
 	List<Pedido> getAll();
 	
