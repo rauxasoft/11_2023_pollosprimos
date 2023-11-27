@@ -13,12 +13,23 @@ public class LogAspectConfig {
 	
 	private Logger logger = LoggerFactory.getLogger(LogAspectConfig.class);
 
+	@Before(value="execution(* com.sinensia.pollosprimos.backend.presentation.restcontrollers.*.*(..))")
+	public void logPresentationLayer(JoinPoint joinPoint) {
+		
+		String nombreClase = joinPoint.getTarget().getClass().getSimpleName();
+		String nombreMetodo = joinPoint.getSignature().getName();
+		Object[] argumentos = joinPoint.getArgs();
+		
+		logger.info("Invocado método {}() de la clase {} con argumentos {}", nombreMetodo, nombreClase, argumentos);
+	}
+	
 	@Before(value="execution(* com.sinensia.pollosprimos.backend.business.services.impl.*.*(..))")
 	public void logBusinessLayer(JoinPoint joinPoint) {
 		
 		String nombreClase = joinPoint.getTarget().getClass().getSimpleName();
 		String nombreMetodo = joinPoint.getSignature().getName();
+		Object[] argumentos = joinPoint.getArgs();
 		
-		logger.info("Invocado método {}() de la clase {}", nombreMetodo, nombreClase);
+		logger.info("Invocado método {}() de la clase {} con argumentos {}", nombreMetodo, nombreClase, argumentos);
 	}
 }

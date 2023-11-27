@@ -16,6 +16,7 @@ import com.sinensia.pollosprimos.backend.business.model.Cliente;
 import com.sinensia.pollosprimos.backend.business.model.Pedido;
 import com.sinensia.pollosprimos.backend.business.services.PedidoServices;
 import com.sinensia.pollosprimos.backend.integration.model.ClientePL;
+import com.sinensia.pollosprimos.backend.integration.model.EstadoPedidoPL;
 import com.sinensia.pollosprimos.backend.integration.model.PedidoPL;
 import com.sinensia.pollosprimos.backend.integration.repositories.PedidoPLRepository;
 
@@ -47,8 +48,16 @@ public class PedidoServicesImpl implements PedidoServices {
 
 	@Override
 	public Optional<Pedido> read(Long numero) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	
+		Optional<PedidoPL> optional = pedidoPLRepository.findById(numero);
+		
+		Pedido pedido = null;
+		
+		if(optional.isPresent()) {
+			pedido = mapper.map(optional.get(), Pedido.class);
+		}
+	
+		return Optional.ofNullable(pedido);
 	}
 
 	@Override
@@ -60,27 +69,87 @@ public class PedidoServicesImpl implements PedidoServices {
 	}
 
 	@Override
+	@Transactional
 	public void procesar(Long numero) {
-		// TODO Auto-generated method stub
+		
+		Optional<PedidoPL> optional = pedidoPLRepository.findById(numero);
+		
+		if(optional.isEmpty()) {
+			throw new IllegalStateException("No existe el pedido " + numero);
+		}
+		
+		PedidoPL pedidoPL = optional.get();
+		EstadoPedidoPL estado = pedidoPL.getEstado();
+		
+		if(estado != EstadoPedidoPL.NUEVO) {
+			throw new IllegalStateException("No se puede marcar como EN_PROCESO un pedido en estado " + estado);
+		}
+			
+		pedidoPL.setEstado(EstadoPedidoPL.EN_PROCESO);	
 		
 	}
 
 	@Override
+	@Transactional
 	public void entregar(Long numero) {
-		// TODO Auto-generated method stub
+		
+		Optional<PedidoPL> optional = pedidoPLRepository.findById(numero);
+		
+		if(optional.isEmpty()) {
+			throw new IllegalStateException("No existe el pedido " + numero);
+		}
+		
+		PedidoPL pedidoPL = optional.get();
+		EstadoPedidoPL estado = pedidoPL.getEstado();
+		
+		if(estado != EstadoPedidoPL.EN_PROCESO) {
+			throw new IllegalStateException("No se puede marcar como PENDIENTE_ENTREGA un pedido en estado " + estado);
+		}
+			
+		pedidoPL.setEstado(EstadoPedidoPL.PENDIENTE_ENTREGA);	
 		
 	} 	
 
 	@Override
+	@Transactional
 	public void servir(Long numero) {
-		// TODO Auto-generated method stub
+		
+		Optional<PedidoPL> optional = pedidoPLRepository.findById(numero);
+		
+		if(optional.isEmpty()) {
+			throw new IllegalStateException("No existe el pedido " + numero);
+		}
+		
+		PedidoPL pedidoPL = optional.get();
+		EstadoPedidoPL estado = pedidoPL.getEstado();
+		
+		if(estado != EstadoPedidoPL.PENDIENTE_ENTREGA) {
+			throw new IllegalStateException("No se puede marcar como SERVIDO un pedido en estado " + estado);
+		}
+			
+		pedidoPL.setEstado(EstadoPedidoPL.SERVIDO);	
 		
 	}
 
 	@Override
+	@Transactional
 	public void cancelar(Long numero) {
-		// TODO Auto-generated method stub
 		
+		Optional<PedidoPL> optional = pedidoPLRepository.findById(numero);
+		
+		if(optional.isEmpty()) {
+			throw new IllegalStateException("No existe el pedido " + numero);
+		}
+		
+		PedidoPL pedidoPL = optional.get();
+		EstadoPedidoPL estado = pedidoPL.getEstado();
+		
+		if(estado == EstadoPedidoPL.CANCELADO || estado == EstadoPedidoPL.SERVIDO) {
+			throw new IllegalStateException("No se puede cancelar un pedido en estado " + estado);
+		}
+			
+		pedidoPL.setEstado(EstadoPedidoPL.CANCELADO);	
+
 	}
 
 	@Override
