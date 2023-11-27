@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Pollos Primos</title>
+	<jsp:include page="common-in-head.jsp"/>
 </head>
 <body>
-	<div>
+	<div class="container-fluid">
 		<jsp:include page="header.jsp"/>
 		<h2>Bienvenidos a Pollos Primos!</h2>
 		<p></p>

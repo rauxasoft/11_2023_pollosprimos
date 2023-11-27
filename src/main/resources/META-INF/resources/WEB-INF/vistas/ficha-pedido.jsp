@@ -9,24 +9,24 @@
 <body>
 	<div class="container-fluid">
 		<jsp:include page="header.jsp"/>
-		<h2>Listado de Camareros</h2>
+		<h2>Pedido</h2>
 		<table class="table">
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>DNI</th>
-					<th>Nombre Completo</th>
-				</tr>
-			</thead>
-			<tbody>
-			<c:forEach var="camarero" items="${camareros}">
-				<tr>
-					<td><a href="camareros?id=${camarero.id}">${camarero.id}</a></td>
-					<td>${camarero.dni}</td>
-					<td>${camarero.apellido1} ${camarero.apellido2}, ${camarero.nombre}</td>
-				</tr>
-			</c:forEach>
-			</tbody>
+			<tr>
+				<th>Número</th>
+				<td>${pedido.numero}</td>
+			</tr>
+			<tr>
+				<th>Fecha</th>
+				<td><fmt:formatDate value="${pedido.fecha}" pattern="dd/MM/yyyy"/></td>
+			</tr>
+			<tr>
+				<th>Hora</th>
+				<td><fmt:formatDate value="${pedido.fecha}" pattern="HH:mm"/></td>
+			</tr>
+			<tr>
+				<th>Estado</th>
+				<td>${pedido.estado}</td>
+			</tr>
 		</table>
 	</div>
 </body>
