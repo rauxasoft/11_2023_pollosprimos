@@ -27,8 +27,13 @@ public class AppPedidoController {
 			mav.setViewName("listado-pedidos");
 		} else {
 			Optional<Pedido> optional = pedidoServices.read(numero);
-			Pedido pedido = optional.get();
-			mav.addObject("pedido", pedido);
+			
+			if(optional.isEmpty()) {
+				mav.addObject("mensajeError", "No existe el pedido " + numero);
+			} else {
+				mav.addObject("pedido", optional.get());
+			}
+			
 			mav.setViewName("ficha-pedido");
 		}
 		
