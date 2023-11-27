@@ -16,7 +16,7 @@ public class Producto implements Serializable {
 	private boolean descatalogado;
 	
 	public Producto() {
-		
+		// No args constructor
 	}
 
 	public Long getCodigo() {

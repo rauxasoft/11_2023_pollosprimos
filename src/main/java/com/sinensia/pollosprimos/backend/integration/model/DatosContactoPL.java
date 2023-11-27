@@ -13,7 +13,7 @@ public class DatosContactoPL implements Serializable{
 	private String email;
 	
 	public DatosContactoPL() {
-		
+		// No args constructor
 	}
 
 	public String getTelefono() {

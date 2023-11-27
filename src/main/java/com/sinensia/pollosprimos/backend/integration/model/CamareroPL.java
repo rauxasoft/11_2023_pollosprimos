@@ -13,7 +13,7 @@ public class CamareroPL extends PersonaPL{
 	private String licenciaManipuladorAlimentos;
 	
 	public CamareroPL() {
-		
+		// No args constructor
 	}
 	
 	public String getLicenciaManipuladorAlimentos() {

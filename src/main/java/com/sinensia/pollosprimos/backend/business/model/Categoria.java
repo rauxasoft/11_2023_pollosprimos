@@ -10,7 +10,7 @@ public class Categoria implements Serializable {
 	private String nombre;
 	
 	public Categoria() {
-		
+		// No args constructor
 	}
 
 	public Long getId() {

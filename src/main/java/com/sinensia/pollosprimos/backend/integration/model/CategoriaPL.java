@@ -18,7 +18,7 @@ public class CategoriaPL implements Serializable {
 	private String nombre;
 	
 	public CategoriaPL() {
-		
+		// No args constructor
 	}
 
 	public Long getId() {

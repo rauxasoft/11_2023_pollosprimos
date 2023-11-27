@@ -12,8 +12,12 @@ import com.sinensia.pollosprimos.backend.auditoria.services.HttpAuditLogServices
 @RequestMapping("/app")
 public class AppAuditoriaController {
 
-	@Autowired
 	private HttpAuditLogServices httpAuditLogServices;
+	
+	@Autowired
+	public AppAuditoriaController(HttpAuditLogServices httpAuditLogServices) {
+		this.httpAuditLogServices = httpAuditLogServices;
+	}
 	
 	@GetMapping("/logs")
 	public ModelAndView getPaginaLogs(ModelAndView mav) {

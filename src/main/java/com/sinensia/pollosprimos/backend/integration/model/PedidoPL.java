@@ -55,7 +55,7 @@ public class PedidoPL implements Serializable {
 	private List<LineaPedidoPL> lineas;
 	
 	public PedidoPL() {
-		
+		// No args constructor
 	}
 
 	public Long getNumero() {

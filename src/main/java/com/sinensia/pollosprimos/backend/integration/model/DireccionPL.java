@@ -15,7 +15,7 @@ public class DireccionPL implements Serializable{
 	private String pais;
 	
 	public DireccionPL() {
-		
+		// No args constructor
 	}
 
 	public String getDireccion() {

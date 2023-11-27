@@ -35,7 +35,7 @@ public abstract class PersonaPL implements Serializable {
 	private DatosContactoPL datosContacto;
 	
 	public PersonaPL() {
-		
+		// No args constructor
 	}
 
 	public Long getId() {

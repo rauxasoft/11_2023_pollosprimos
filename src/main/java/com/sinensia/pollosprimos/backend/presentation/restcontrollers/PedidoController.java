@@ -22,8 +22,12 @@ import com.sinensia.pollosprimos.backend.presentation.config.PresentationExcepti
 @RequestMapping("/pedidos")
 public class PedidoController {
 
-	@Autowired
 	private PedidoServices pedidoServices;
+
+	@Autowired
+	public PedidoController(PedidoServices pedidoServices) {
+		this.pedidoServices = pedidoServices;
+	}
 	
 	@GetMapping
 	public List<Pedido> getAll(){

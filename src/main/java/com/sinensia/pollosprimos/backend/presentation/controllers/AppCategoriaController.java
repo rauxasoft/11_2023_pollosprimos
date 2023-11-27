@@ -11,9 +11,13 @@ import com.sinensia.pollosprimos.backend.business.services.CategoriaServices;
 @Controller
 @RequestMapping("/app")
 public class AppCategoriaController {
-
-	@Autowired
+	
 	private CategoriaServices categoriaServices;
+	
+	@Autowired
+	public AppCategoriaController(CategoriaServices categoriaServices) {
+		this.categoriaServices = categoriaServices;
+	}
 	
 	@GetMapping("/categorias")
 	public ModelAndView getListadoCaregorias(ModelAndView mav) {

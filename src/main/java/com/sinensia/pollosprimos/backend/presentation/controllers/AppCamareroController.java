@@ -12,8 +12,12 @@ import com.sinensia.pollosprimos.backend.business.services.CamareroServices;
 @RequestMapping("/app")
 public class AppCamareroController {
 
-	@Autowired
 	private CamareroServices camareroServices;
+	
+	@Autowired
+	public AppCamareroController(CamareroServices camareroServices){
+		this.camareroServices = camareroServices;
+	}
 	
 	@GetMapping("/camareros")
 	public ModelAndView getListadoCamareros(ModelAndView mav) {

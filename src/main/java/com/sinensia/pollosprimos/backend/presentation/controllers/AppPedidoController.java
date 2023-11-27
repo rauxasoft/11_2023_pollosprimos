@@ -15,9 +15,13 @@ import com.sinensia.pollosprimos.backend.business.services.PedidoServices;
 @Controller
 @RequestMapping("/app")
 public class AppPedidoController {
-
-	@Autowired
+	
 	private PedidoServices pedidoServices;
+	
+	@Autowired
+	public AppPedidoController(PedidoServices pedidoServices) {
+		this.pedidoServices = pedidoServices;
+	}
 	
 	@GetMapping("/pedidos")
 	public ModelAndView getListadoPedidos(ModelAndView mav, @RequestParam(required = false) Long numero) {

@@ -18,7 +18,7 @@ public class Pedido implements Serializable {
 	private List<LineaPedido> lineas;
 	
 	public Pedido() {
-		
+		// No args constructor
 	}
 
 	public Long getNumero() {

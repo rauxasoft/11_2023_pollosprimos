@@ -15,7 +15,7 @@ public class ClientePL extends PersonaPL {
 	private boolean tarjetaGold;
 	
 	public ClientePL() {
-		
+		// No args constructor
 	}
 
 	public boolean isTarjetaGold() {

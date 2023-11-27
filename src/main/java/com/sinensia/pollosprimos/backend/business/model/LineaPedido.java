@@ -10,7 +10,7 @@ public class LineaPedido implements Serializable {
 	private double precio;
 	
 	public LineaPedido() {
-		
+		// No args constructor
 	}
 
 	public Producto getProducto() {

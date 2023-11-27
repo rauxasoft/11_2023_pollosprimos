@@ -15,7 +15,7 @@ public abstract class Persona implements Serializable {
 	private DatosContacto datosContacto;
 	
 	public Persona() {
-		
+		// No args constructor
 	}
 
 	public Long getId() {

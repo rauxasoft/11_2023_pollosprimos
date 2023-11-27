@@ -18,7 +18,7 @@ public class LineaPedidoPL implements Serializable {
 	private double precio;
 	
 	public LineaPedidoPL() {
-		
+		// No args constructor
 	}
 
 	public ProductoPL getProducto() {

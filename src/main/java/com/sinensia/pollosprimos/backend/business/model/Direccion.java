@@ -12,7 +12,7 @@ public class Direccion implements Serializable{
 	private String pais;
 	
 	public Direccion() {
-		
+		// No args constructor
 	}
 
 	public String getDireccion() {
