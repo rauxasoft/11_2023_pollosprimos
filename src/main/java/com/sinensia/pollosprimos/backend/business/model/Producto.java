@@ -4,13 +4,18 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long codigo;
 	private String nombre;
 	private String descripcion;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fechaAlta;
+	
 	private Double precio;
 	private Categoria categoria;
 	private boolean descatalogado;
