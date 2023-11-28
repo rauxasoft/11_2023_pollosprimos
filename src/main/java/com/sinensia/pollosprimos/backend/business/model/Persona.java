@@ -14,7 +14,7 @@ public abstract class Persona implements Serializable {
 	private Direccion direccion;
 	private DatosContacto datosContacto;
 	
-	public Persona() {
+	protected Persona() {
 		// No args constructor
 	}
 

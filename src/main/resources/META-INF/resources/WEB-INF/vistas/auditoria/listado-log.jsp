@@ -2,15 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<title>Pollos Primos</title>
 	<jsp:include page="../common-in-head.jsp"/>
 </head>
 <body>
 	<div class="container-fluid">
 		<jsp:include page="../header.jsp"/>
 		<h2>Listado de Logs</h2>
-		<table class="table">	
+		<table class="table">
+			<caption>Listado de logs</caption>	
 			<thead>
 				<tr>
 					<th>Id</th>

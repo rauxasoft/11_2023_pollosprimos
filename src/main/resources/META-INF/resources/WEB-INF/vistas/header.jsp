@@ -21,6 +21,9 @@
         <a class="nav-link" href="/app/productos">Productos</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/app/ficha-producto">Alta de Producto</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/h2-console">Consola de H2</a>
       </li>
             <li class="nav-item">

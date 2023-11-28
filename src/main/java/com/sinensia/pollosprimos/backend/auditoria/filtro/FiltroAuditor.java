@@ -20,8 +20,12 @@ import jakarta.transaction.Transactional;
 @Component
 public class FiltroAuditor implements Filter{
 
-	@Autowired
 	private HttpAuditLogServices httpAuditLogServices;
+	
+	@Autowired
+	public FiltroAuditor(HttpAuditLogServices httpAuditLogServices) {
+		this.httpAuditLogServices = httpAuditLogServices;
+	}
 	
 	@Override
 	@Transactional

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>Pollos Primos</title>
 	<jsp:include page="common-in-head.jsp"/>
 </head>
 <body>
@@ -11,6 +12,7 @@
 		<jsp:include page="header.jsp"/>
 		<h2>Listado de Pedidos</h2>
 		<table class="table">
+			<caption>Listado de Pedidos</caption>
 			<thead>
 				<tr>
 					<th>Número</th>

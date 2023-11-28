@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>Pollos Primos</title>
 	<jsp:include page="common-in-head.jsp"/>
 </head>
 <body>

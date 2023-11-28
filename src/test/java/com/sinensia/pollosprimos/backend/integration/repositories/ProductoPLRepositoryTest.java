@@ -20,19 +20,19 @@ import com.sinensia.pollosprimos.backend.integration.model.ProductoPL;
 			  "/data/h2/schema_test.sql",
 			  "/data/h2/data_categorias_test.sql",
 		      "/data/h2/data_test.sql"})
-public class ProductoPLRepositoryTest {
+class ProductoPLRepositoryTest {
 	
 	@Autowired
 	private ProductoPLRepository productoPLRepository;
 
 	@Test
-	@Disabled
+	@Disabled("Pendiente de implementación")
 	void findByPrecioBetweenOrderByPrecio(){
 		fail("Not implemented yet!");
 	}
 	
 	@Test
-	@Disabled
+	@Disabled("Pendiente de implementación")
 	void findByFechaAltaBetweenOrderByFechaAlta() {
 		fail("Not implemented yet!");
 	}
@@ -51,37 +51,37 @@ public class ProductoPLRepositoryTest {
 	} 
 	
 	@Test
-	@Disabled
+	@Disabled("Pendiente de implementación")
 	void findByDescatalogado() {
 		fail("Not implemented yet!");
 	} 
 
 	@Test
-	@Disabled
+	@Disabled("Pendiente de implementación")
 	void findByCategoria() {
 		fail("Not implemented yet!");
 	}
 	
 	@Test
-	@Disabled
+	@Disabled("Pendiente de implementación")
 	void variarPrecio_v1() {
 		fail("Not implemented yet!");
 	}
 	
 	@Test
-	@Disabled
+	@Disabled("Pendiente de implementación")
 	void variarPrecio_v2() {
 		fail("Not implemented yet!");
 	}
 	
 	@Test
-	@Disabled
+	@Disabled("Pendiente de implementación")
 	void getEstadisticaNumeroProductos() {
 		fail("Not implemented yet!");
 	}
 	
 	@Test
-	@Disabled
+	@Disabled("Pendiente de implementación")
 	void getEstadisticaPrecioMedio() {
 		fail("Not implemented yet!");
 	}

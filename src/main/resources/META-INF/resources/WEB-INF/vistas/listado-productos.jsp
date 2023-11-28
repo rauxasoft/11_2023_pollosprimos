@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>Pollos Primos</title>
 	<jsp:include page="common-in-head.jsp"/>
 </head>
 <body>
@@ -11,6 +12,7 @@
 		<jsp:include page="header.jsp"/>
 		<h2>Listado de Productos</h2>
 		<table class="table">
+			<caption>Listado de Productos</caption>
 			<thead>
 				<tr>
 					<th>Código</th>
@@ -25,7 +27,7 @@
 			<tbody>
 			<c:forEach var="producto" items="${productos}">
 				<tr>
-					<td>${producto.codigo}</td>
+					<td><a href="ficha-producto?codigo=${producto.codigo}">${producto.codigo}</a></td>
 					<td><fmt:formatDate value="${producto.fechaAlta}" pattern="dd/MM/yyyy"/></td>
 					<td style="text-align: right;">${producto.precio} €</td>
 					<td>${producto.nombre}</td>

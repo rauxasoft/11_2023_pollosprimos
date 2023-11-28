@@ -15,7 +15,7 @@ public class HttpAuditLog implements Serializable {
 	private int httpStatusCode;
 	
 	public HttpAuditLog() {
-		
+		// No args constructor
 	}
 
 	public Long getId() {

@@ -41,5 +41,15 @@
    		<class-b>com.sinensia.pollosprimos.backend.integration.model.PedidoPL</class-b>
    	</mapping>
    	
-                
+   	<!--  Business to Presentation -->
+   	
+   	<mapping>
+   		<class-a>com.sinensia.pollosprimos.backend.business.model.Producto</class-a>
+   		<class-b>com.sinensia.pollosprimos.backend.presentation.model.ProductoVO</class-b>
+   		<field>
+  			<a date-format="yyyy-MM-dd">fechaAlta</a>
+  			<b>fechaAlta</b>
+		</field>
+   	</mapping>
+   	             
  </mappings>

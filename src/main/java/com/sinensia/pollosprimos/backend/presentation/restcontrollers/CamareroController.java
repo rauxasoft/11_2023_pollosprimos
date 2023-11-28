@@ -24,9 +24,13 @@ import com.sinensia.pollosprimos.backend.presentation.config.PresentationExcepti
 @RestController
 @RequestMapping("/camareros")
 public class CamareroController {
-
-	@Autowired
+	
 	private CamareroServices camareroServices;
+	
+	@Autowired
+	public CamareroController(CamareroServices camareroServices) {
+		this.camareroServices = camareroServices;
+	}
 	
 	@GetMapping
 	public List<Camarero> getAll(){
@@ -34,7 +38,7 @@ public class CamareroController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody Camarero camarero, UriComponentsBuilder ucb) {
+	public ResponseEntity<Object> create(@RequestBody Camarero camarero, UriComponentsBuilder ucb) {
 		
 		Long id = null;
 		

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +67,9 @@ public class PedidoServicesImpl implements PedidoServices {
 		
 		List<PedidoPL> pedidosPL = pedidoPLRepository.findAll(Sort.by("numero").descending());
 		
-		return pedidosPL.stream().map(x -> mapper.map(x, Pedido.class)).collect(Collectors.toList());
+		return pedidosPL.stream()
+				.map(x -> mapper.map(x, Pedido.class))
+				.toList();
 	}
 
 	@Override

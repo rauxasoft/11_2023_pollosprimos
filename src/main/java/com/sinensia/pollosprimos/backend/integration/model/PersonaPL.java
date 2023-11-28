@@ -34,7 +34,7 @@ public abstract class PersonaPL implements Serializable {
 	@Embedded
 	private DatosContactoPL datosContacto;
 	
-	public PersonaPL() {
+	protected PersonaPL() {
 		// No args constructor
 	}
 

@@ -47,7 +47,7 @@ public class PedidoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody Pedido pedido, UriComponentsBuilder ucb) {
+	public ResponseEntity<Object> create(@RequestBody Pedido pedido, UriComponentsBuilder ucb) {
 				
 		Long numero = null;
 		

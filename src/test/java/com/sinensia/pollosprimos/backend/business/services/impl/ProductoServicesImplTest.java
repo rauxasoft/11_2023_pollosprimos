@@ -33,7 +33,7 @@ import com.sinensia.pollosprimos.backend.integration.model.ProductoPL;
 import com.sinensia.pollosprimos.backend.integration.repositories.ProductoPLRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class ProductoServicesImplTest {
+class ProductoServicesImplTest {
 
 	@Mock
 	private ProductoPLRepository productoPLRepository;

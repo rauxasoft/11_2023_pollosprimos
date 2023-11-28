@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,7 +124,7 @@ public class ProductoServicesImpl implements ProductoServices {
 	
 		List<ProductoPL> productosPL = productos.stream()
 				.map(x -> mapper.map(x, ProductoPL.class))
-				.collect(Collectors.toList());
+				.toList();
 		
 		productoPLRepository.variarPrecio(productosPL, porcentaje);
 		
@@ -160,7 +159,7 @@ public class ProductoServicesImpl implements ProductoServices {
 		
 		List<Object[]> resultados = productoPLRepository.getEstadisticaPrecioMedio();
 		
-		Map<Categoria, Double> estadistica = new HashMap<>();;
+		Map<Categoria, Double> estadistica = new HashMap<>();
 		
 		resultados.stream().forEach(x -> {
 			
@@ -185,12 +184,12 @@ public class ProductoServicesImpl implements ProductoServices {
 		
 		return estadistica.entrySet().stream().map(x -> { 
 			
-			Categoria categoria = x.getKey();
-			Integer cantidad = x.getValue();
-			
-			return new EstadisticaDTO1(categoria.getId(), categoria.getNombre(), cantidad);
-		})
-				.collect(Collectors.toList());
+					Categoria categoria = x.getKey();
+					Integer cantidad = x.getValue();
+					
+					return new EstadisticaDTO1(categoria.getId(), categoria.getNombre(), cantidad);
+					
+				}).toList();
 	}
 	
 	@Override
@@ -200,12 +199,11 @@ public class ProductoServicesImpl implements ProductoServices {
 		
 		return estadistica.entrySet().stream().map(x -> { 
 			
-			Categoria categoria = x.getKey();
-			Integer cantidad = x.getValue();
+					Categoria categoria = x.getKey();
+					Integer cantidad = x.getValue();
 			
-			return new EstadisticaDTO2(categoria, cantidad);
-		})
-				.collect(Collectors.toList());
+					return new EstadisticaDTO2(categoria, cantidad);
+				}).toList();
 	}
 	
 	// ********************************************************
@@ -218,6 +216,6 @@ public class ProductoServicesImpl implements ProductoServices {
 		
 		return productosPL.stream()
 				.map(x -> mapper.map(x, Producto.class))
-				.collect(Collectors.toList());
+				.toList();
 	}
 }

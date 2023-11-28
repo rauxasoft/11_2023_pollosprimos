@@ -13,9 +13,13 @@ import com.sinensia.pollosprimos.backend.auditoria.services.HttpAuditLogServices
 @RestController
 @RequestMapping("/http-logs")
 public class HttpAuditLogController {
-
-	@Autowired
+	
 	private HttpAuditLogServices httpAuditLogServices;
+	
+	@Autowired
+	public HttpAuditLogController(HttpAuditLogServices httpAuditLogServices) {
+		this.httpAuditLogServices = httpAuditLogServices;
+	}
 	
 	@GetMapping
 	public List<HttpAuditLog> getAll(){

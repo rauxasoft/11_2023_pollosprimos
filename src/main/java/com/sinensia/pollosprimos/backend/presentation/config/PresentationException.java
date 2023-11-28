@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 public class PresentationException extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 
-	private HttpStatus httpStatus;
+	private final HttpStatus httpStatus;
 	
 	public PresentationException(String mensaje, HttpStatus httpStatus) {
 		super(mensaje);

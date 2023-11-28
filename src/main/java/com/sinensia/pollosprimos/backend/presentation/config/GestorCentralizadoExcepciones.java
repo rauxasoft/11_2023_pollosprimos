@@ -17,7 +17,7 @@ public class GestorCentralizadoExcepciones extends ResponseEntityExceptionHandle
 	// ************************************************************************************************
 	
 	@ExceptionHandler(PresentationException.class)
-	protected ResponseEntity<?> handlePresentationException(PresentationException ex, WebRequest request){
+	protected ResponseEntity<Object> handlePresentationException(PresentationException ex, WebRequest request){
 		RespuestaError respuestaError = new RespuestaError(ex.getMessage());
 		return handleExceptionInternal(ex, respuestaError, new HttpHeaders(), ex.getHttpStatus(), request);
 	}
@@ -25,7 +25,7 @@ public class GestorCentralizadoExcepciones extends ResponseEntityExceptionHandle
 	// ************************************************************************************************
 	
 	@ExceptionHandler(Exception.class)
-	protected ResponseEntity<?> handleGenericException(Exception ex, WebRequest request){
+	protected ResponseEntity<Object> handleGenericException(Exception ex, WebRequest request){
 		RespuestaError respuestaError = new RespuestaError(ex.getMessage());
 		return handleExceptionInternal(ex, respuestaError, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
 	}
@@ -36,10 +36,12 @@ public class GestorCentralizadoExcepciones extends ResponseEntityExceptionHandle
 	protected ResponseEntity<Object> handleTypeMismatch(TypeMismatchException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
 		Object valor = ex.getValue();
-		String tipoEntrante = valor.getClass().getName();
-		String tipoRequerido = (ex.getRequiredType()).getName();
+		String tipoEntrante = valor != null ? valor.getClass().getName() : null;
 		
-		RespuestaError respuestaError = new RespuestaError("El parámetro " + valor + " es de tipo " + tipoEntrante + " - Se requiere un parámetro de tipo " + tipoRequerido);
+		Class<?> requiredType = ex.getRequiredType();
+		String nombreRequiredType = requiredType != null ? requiredType.getSimpleName() : null;
+		
+		RespuestaError respuestaError = new RespuestaError("El parámetro " + valor + " es de tipo " + tipoEntrante + " - Se requiere un parámetro de tipo " + nombreRequiredType);
 		
 		return handleExceptionInternal(ex, respuestaError, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
@@ -52,7 +54,5 @@ public class GestorCentralizadoExcepciones extends ResponseEntityExceptionHandle
 	}
 	
 	// ************************************************************************************************
-	
-	
-	
+
 }

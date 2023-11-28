@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,13 +19,12 @@ import com.sinensia.pollosprimos.backend.presentation.config.PresentationExcepti
 @RequestMapping("/productos")
 public class ProductoController {
 
-	@Autowired
 	private ProductoServices productoServices;
 	
-	@RequestMapping(params = {"min", "max"}, method = RequestMethod.GET)
-	public List<Producto> getBetweenPriceRange(@RequestParam Double min, @RequestParam Double max){ 
-		return productoServices.getBetweenPriceRange(min, max);	
-	}
+	@Autowired
+	public ProductoController(ProductoServices productoServices) {
+		this.productoServices = productoServices;
+	}	
 	
 	@GetMapping("/{codigo}")
 	public Producto read(@PathVariable Long codigo) {
@@ -41,8 +39,18 @@ public class ProductoController {
 	}
 	
 	@GetMapping
-	public List<Producto> getAll(){
-		return productoServices.getAll();
+	public List<Producto> getAll(@RequestParam(required = false) Double min, 
+								 @RequestParam(required = false) Double max){
+		
+		List<Producto> productos = null;
+		
+		if(min != null && max != null) {
+			productos = productoServices.getBetweenPriceRange(min, max);
+		} else {
+			productos = productoServices.getAll();
+		}
+		
+		return productos;
 	}
 	
 }
