@@ -15,7 +15,6 @@ import com.sinensia.pollosprimos.backend.integration.repositories.ClientePLRepos
 public class ClienteServicesImpl implements ClienteServices {
 
 	private ClientePLRepository clientePLRepository;
-	
 	private DozerBeanMapper mapper;
 	
 	@Autowired

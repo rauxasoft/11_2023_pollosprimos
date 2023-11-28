@@ -25,12 +25,15 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class ProductoServicesImpl implements ProductoServices {
-
-	@Autowired
+	
 	private ProductoPLRepository productoPLRepository;
+	private DozerBeanMapper mapper;
 	
 	@Autowired
-	private DozerBeanMapper mapper;
+	public ProductoServicesImpl(ProductoPLRepository productoPLRepository, DozerBeanMapper mapper ) {
+		this.productoPLRepository = productoPLRepository;
+		this.mapper = mapper;
+	}
 	
 	@Override
 	@Transactional

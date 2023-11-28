@@ -25,11 +25,14 @@ import jakarta.transaction.Transactional;
 @Service
 public class PedidoServicesImpl implements PedidoServices {
 
-	@Autowired
 	private PedidoPLRepository pedidoPLRepository;
+	private DozerBeanMapper mapper;
 	
 	@Autowired
-	private DozerBeanMapper mapper;
+	public PedidoServicesImpl(PedidoPLRepository pedidoPLRepository, DozerBeanMapper mapper ) {
+		this.pedidoPLRepository = pedidoPLRepository;
+		this.mapper = mapper;
+	}
 	
 	@Override
 	@Transactional
