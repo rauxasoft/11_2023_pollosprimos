@@ -72,13 +72,7 @@ public class PedidoServicesImpl implements PedidoServices {
 	@Transactional
 	public void procesar(Long numero) {
 		
-		Optional<PedidoPL> optional = pedidoPLRepository.findById(numero);
-		
-		if(optional.isEmpty()) {
-			throw new IllegalStateException("No existe el pedido " + numero);
-		}
-		
-		PedidoPL pedidoPL = optional.get();
+		PedidoPL pedidoPL = obtenerPedidoPL(numero);
 		EstadoPedidoPL estado = pedidoPL.getEstado();
 		
 		if(estado != EstadoPedidoPL.NUEVO) {
@@ -93,13 +87,7 @@ public class PedidoServicesImpl implements PedidoServices {
 	@Transactional
 	public void entregar(Long numero) {
 		
-		Optional<PedidoPL> optional = pedidoPLRepository.findById(numero);
-		
-		if(optional.isEmpty()) {
-			throw new IllegalStateException("No existe el pedido " + numero);
-		}
-		
-		PedidoPL pedidoPL = optional.get();
+		PedidoPL pedidoPL = obtenerPedidoPL(numero);
 		EstadoPedidoPL estado = pedidoPL.getEstado();
 		
 		if(estado != EstadoPedidoPL.EN_PROCESO) {
@@ -114,13 +102,7 @@ public class PedidoServicesImpl implements PedidoServices {
 	@Transactional
 	public void servir(Long numero) {
 		
-		Optional<PedidoPL> optional = pedidoPLRepository.findById(numero);
-		
-		if(optional.isEmpty()) {
-			throw new IllegalStateException("No existe el pedido " + numero);
-		}
-		
-		PedidoPL pedidoPL = optional.get();
+		PedidoPL pedidoPL = obtenerPedidoPL(numero);
 		EstadoPedidoPL estado = pedidoPL.getEstado();
 		
 		if(estado != EstadoPedidoPL.PENDIENTE_ENTREGA) {
@@ -135,13 +117,7 @@ public class PedidoServicesImpl implements PedidoServices {
 	@Transactional
 	public void cancelar(Long numero) {
 		
-		Optional<PedidoPL> optional = pedidoPLRepository.findById(numero);
-		
-		if(optional.isEmpty()) {
-			throw new IllegalStateException("No existe el pedido " + numero);
-		}
-		
-		PedidoPL pedidoPL = optional.get();
+		PedidoPL pedidoPL = obtenerPedidoPL(numero);
 		EstadoPedidoPL estado = pedidoPL.getEstado();
 		
 		if(estado == EstadoPedidoPL.CANCELADO || estado == EstadoPedidoPL.SERVIDO) {
@@ -156,13 +132,7 @@ public class PedidoServicesImpl implements PedidoServices {
 	@Transactional
 	public void update(Long numeroPedido, Map<String, Object> mapaAtributos) {
 		
-		Optional<PedidoPL> optional = pedidoPLRepository.findById(numeroPedido);
-		
-		if(optional.isEmpty()) {
-			throw new IllegalStateException("No existe el pedido " + numeroPedido);
-		}
-		
-		PedidoPL pedidoPL = optional.get();
+		PedidoPL pedidoPL = obtenerPedidoPL(numeroPedido);
 			
 		Set<String> nombresAtributos = mapaAtributos.keySet();
 		
@@ -203,4 +173,20 @@ public class PedidoServicesImpl implements PedidoServices {
 		
 	}
 	
+	// ********************************************************
+	//
+	// Private Methods
+	//
+	// ********************************************************
+	
+	private PedidoPL obtenerPedidoPL(Long numeroPedido) {
+		
+		Optional<PedidoPL> optional = pedidoPLRepository.findById(numeroPedido);
+		
+		if(optional.isEmpty()) {
+			throw new IllegalStateException("No existe el pedido " + numeroPedido);
+		}
+		
+		return optional.get();
+	}
 }

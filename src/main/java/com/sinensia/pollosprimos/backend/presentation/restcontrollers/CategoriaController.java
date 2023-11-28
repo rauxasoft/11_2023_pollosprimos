@@ -22,8 +22,12 @@ import com.sinensia.pollosprimos.backend.presentation.config.PresentationExcepti
 @RequestMapping("/categorias")
 public class CategoriaController {
 
-	@Autowired
 	private CategoriaServices categoriaServices; 
+	
+	@Autowired
+	public CategoriaController(CategoriaServices categoriaServices) {
+		this.categoriaServices = categoriaServices;
+	}
 	
 	@GetMapping
 	public List<Categoria> getAll(){ 
@@ -43,7 +47,7 @@ public class CategoriaController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody Categoria categoria, UriComponentsBuilder ucb) {
+	public ResponseEntity<Object> create(@RequestBody Categoria categoria, UriComponentsBuilder ucb) {
 	
 		Long id = null;
 		

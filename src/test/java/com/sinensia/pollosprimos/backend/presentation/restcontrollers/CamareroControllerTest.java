@@ -34,7 +34,7 @@ import com.sinensia.pollosprimos.backend.presentation.config.RespuestaError;
 
 @WebMvcTest(value=CamareroController.class, 
             excludeFilters=@ComponentScan.Filter(classes=FiltroAuditor.class, type=FilterType.ASSIGNABLE_TYPE))
-public class CamareroControllerTest {
+class CamareroControllerTest {
 	
 	@Autowired
 	private MockMvc miniPostman;

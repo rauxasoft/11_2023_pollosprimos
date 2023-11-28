@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Direccion implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String direccion;
+	private String domicilio;
 	private String poblacion;
 	private String codigoPostal;
 	private String provincia;
@@ -15,12 +15,12 @@ public class Direccion implements Serializable{
 		// No args constructor
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getDomicilio() {
+		return domicilio;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
 	}
 
 	public String getPoblacion() {
@@ -57,7 +57,7 @@ public class Direccion implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Direccion [direccion=" + direccion + ", poblacion=" + poblacion + ", codigoPostal=" + codigoPostal
+		return "Direccion [domicilio=" + domicilio + ", poblacion=" + poblacion + ", codigoPostal=" + codigoPostal
 				+ ", provincia=" + provincia + ", pais=" + pais + "]";
 	}
 

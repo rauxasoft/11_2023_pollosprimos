@@ -2,7 +2,6 @@ package com.sinensia.pollosprimos.backend.business.services.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +17,14 @@ import jakarta.transaction.Transactional;
 @Service
 public class CamareroServicesImpl implements CamareroServices {
 
-	@Autowired
 	private CamareroPLRepository camareroPLRepository;
+	private DozerBeanMapper mapper;
 	
 	@Autowired
-	private DozerBeanMapper mapper;
+	public CamareroServicesImpl(CamareroPLRepository camareroPLRepository, DozerBeanMapper mapper) {
+		this.camareroPLRepository = camareroPLRepository ;
+		this.mapper = mapper;
+	}
 	
 	@Override
 	@Transactional
@@ -118,7 +120,7 @@ public class CamareroServicesImpl implements CamareroServices {
 		
 		return camareroPLRepository.findAll().stream()
 				.map(x -> mapper.map(x, Camarero.class))
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 	@Override
@@ -126,7 +128,7 @@ public class CamareroServicesImpl implements CamareroServices {
 		
 		return camareroPLRepository.findByNombreLikeIgnoreCase(texto).stream()
 				.map(x -> mapper.map(x, Camarero.class))
-				.collect(Collectors.toList());
+				.toList();		
 	}
 
 	@Override

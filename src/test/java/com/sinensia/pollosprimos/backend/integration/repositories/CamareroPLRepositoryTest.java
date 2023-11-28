@@ -21,7 +21,7 @@ import com.sinensia.pollosprimos.backend.integration.model.CamareroPL;
 			  "/data/h2/schema_test.sql",
 			  "/data/h2/data_categorias_test.sql",
 		      "/data/h2/data_test.sql"})
-public class CamareroPLRepositoryTest {
+class CamareroPLRepositoryTest {
 
 	@Autowired
 	private CamareroPLRepository camareroPLRepository;

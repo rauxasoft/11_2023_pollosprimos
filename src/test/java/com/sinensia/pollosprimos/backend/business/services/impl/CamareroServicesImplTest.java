@@ -23,7 +23,7 @@ import com.sinensia.pollosprimos.backend.integration.model.CamareroPL;
 import com.sinensia.pollosprimos.backend.integration.repositories.CamareroPLRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class CamareroServicesImplTest {
+class CamareroServicesImplTest {
 
 	@Mock
 	private CamareroPLRepository camareroPLRepository;

@@ -15,11 +15,14 @@ import com.sinensia.pollosprimos.backend.integration.repositories.Establecimient
 @Service
 public class EstablecimientoServicesImpl implements EstablecimientoServices{
 
-	@Autowired
-	private EstablecimientoPLRepository establecimientoPLRepository;
+	private EstablecimientoPLRepository establecimientoPLRepository;	
+	private DozerBeanMapper mapper;
 	
 	@Autowired
-	private DozerBeanMapper mapper;
+	public EstablecimientoServicesImpl(EstablecimientoPLRepository establecimientoPLRepository, DozerBeanMapper mapper) {
+		this.establecimientoPLRepository = establecimientoPLRepository;
+		this.mapper = mapper;
+	}
 	
 	@Override
 	public Long create(Establecimiento establecimiento) {

@@ -2,13 +2,16 @@ package com.sinensia.pollosprimos.backend.integration.model;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class DireccionPL implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String direccion;
+	@Column(name="DIRECCION")
+	private String domicilio;
+	
 	private String poblacion;
 	private String codigoPostal;
 	private String provincia;
@@ -18,12 +21,12 @@ public class DireccionPL implements Serializable{
 		// No args constructor
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getDomicilio() {
+		return domicilio;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
 	}
 
 	public String getPoblacion() {
@@ -60,7 +63,7 @@ public class DireccionPL implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Direccion [direccion=" + direccion + ", poblacion=" + poblacion + ", codigoPostal=" + codigoPostal
+		return "Direccion [domicilio=" + domicilio + ", poblacion=" + poblacion + ", codigoPostal=" + codigoPostal
 				+ ", provincia=" + provincia + ", pais=" + pais + "]";
 	}
 

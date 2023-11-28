@@ -2,7 +2,6 @@ package com.sinensia.pollosprimos.backend.business.services.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +16,15 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class CategoriaServicesImpl implements CategoriaServices {
-
-	@Autowired
+	
 	private CategoriaPLRepository categoriaPLRepository;
+	private DozerBeanMapper mapper;
 	
 	@Autowired
-	private DozerBeanMapper mapper;
+	public CategoriaServicesImpl(CategoriaPLRepository categoriaPLRepository, DozerBeanMapper mapper) {
+		this.categoriaPLRepository = categoriaPLRepository;
+		this.mapper = mapper;
+	}
 	
 	@Override
 	public Optional<Categoria> read(Long id) {
@@ -58,6 +60,6 @@ public class CategoriaServicesImpl implements CategoriaServices {
 		
 		return categoriaPLRepository.findAll().stream()
 				.map(x -> mapper.map(x, Categoria.class))
-				.collect(Collectors.toList());
+				.toList();
 	}
 }
