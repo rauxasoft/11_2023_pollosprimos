@@ -49,7 +49,7 @@ public class CategoriaServicesImpl implements CategoriaServices {
 		}
 		
 		CategoriaPL categoriaPL = mapper.map(categoria, CategoriaPL.class);
-		categoriaPL.setId(System.currentTimeMillis());
+		
 		CategoriaPL createdCategoriaPL = categoriaPLRepository.save(categoriaPL);
 		
 		return createdCategoriaPL.getId();

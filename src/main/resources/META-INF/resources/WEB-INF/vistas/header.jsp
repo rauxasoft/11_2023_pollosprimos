@@ -9,6 +9,9 @@
         <a class="nav-link" href="/app/categorias">Categorias</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/app/alta-categoria">Alta Categoria</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/app/camareros">Camareros</a>
       </li>
       <li class="nav-item">
