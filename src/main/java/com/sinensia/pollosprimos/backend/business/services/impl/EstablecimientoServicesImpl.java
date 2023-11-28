@@ -2,7 +2,6 @@ package com.sinensia.pollosprimos.backend.business.services.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.sinensia.pollosprimos.backend.business.model.Establecimiento;
 import com.sinensia.pollosprimos.backend.business.services.EstablecimientoServices;
+import com.sinensia.pollosprimos.backend.integration.model.EstablecimientoPL;
 import com.sinensia.pollosprimos.backend.integration.repositories.EstablecimientoPLRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class EstablecimientoServicesImpl implements EstablecimientoServices{
@@ -25,15 +27,32 @@ public class EstablecimientoServicesImpl implements EstablecimientoServices{
 	}
 	
 	@Override
+	@Transactional
 	public Long create(Establecimiento establecimiento) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(establecimiento.getCodigo() != null) {
+			throw new IllegalStateException("Para crear un establecimiento el código ha de ser null");
+		}
+		
+		EstablecimientoPL establecimientoPL = mapper.map(establecimiento, EstablecimientoPL.class);
+		
+		EstablecimientoPL createdEstablecimientoPL = establecimientoPLRepository.save(establecimientoPL);
+		
+		return createdEstablecimientoPL.getCodigo();
 	}
 
 	@Override
 	public Optional<Establecimiento> read(Long codigo) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	
+		Establecimiento establecimiento = null;
+		
+		Optional<EstablecimientoPL> optional = establecimientoPLRepository.findById(codigo);
+		
+		if(optional.isPresent()) {
+			establecimiento = mapper.map(optional.get(), Establecimiento.class);
+		}
+		
+		return Optional.ofNullable(establecimiento);
 	}
 
 	@Override
@@ -41,7 +60,7 @@ public class EstablecimientoServicesImpl implements EstablecimientoServices{
 		
 		return establecimientoPLRepository.findAll().stream()
 				.map(x -> mapper.map(x, Establecimiento.class))
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 }

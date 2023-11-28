@@ -142,14 +142,19 @@ public class PedidoServicesImpl implements PedidoServices {
 		for(String nombreAtributo: nombresAtributos) {
 			
 			switch(nombreAtributo) {
+				
 				case "comentario" : pedidoPL.setComentario((String) mapaAtributos.get(nombreAtributo)); break;
+				
 				case "cliente" : {
 					Cliente cliente = (Cliente) mapaAtributos.get(nombreAtributo);
 					ClientePL clientePL = mapper.map(cliente, ClientePL.class);
 					pedidoPL.setCliente(clientePL);
 					break;
 				}
+				
 				case "fecha" : pedidoPL.setFecha((Date) mapaAtributos.get(nombreAtributo)); break;
+				
+				default: throw new IllegalArgumentException("El atributo " + nombreAtributo + " no existe o no se puede actualizar");
 			}
 			
 		}

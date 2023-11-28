@@ -33,8 +33,8 @@ public interface ProductoPLRepository extends JpaRepository<ProductoPL, Long>{
 	@Query(value="SELECT C.ID,                                                       "
 			+ "          C.NOMBRE,                                                   "
 			+ "          COUNT(P.NOMBRE)                                             "
-			+ "	    FROM CATEGORIAS C LEFT JOIN PRODUCTOS P ON P.ID_CATEGORIA = C.ID "
-			+ "	GROUP BY C.ID", nativeQuery=true)
+			+ "     FROM CATEGORIAS C LEFT JOIN PRODUCTOS P ON P.ID_CATEGORIA = C.ID "
+			+ " GROUP BY C.ID", nativeQuery=true)
 	List<Object[]> getEstadisticaNumeroProductos();
 	
 	@Query(value="SELECT C.ID, "

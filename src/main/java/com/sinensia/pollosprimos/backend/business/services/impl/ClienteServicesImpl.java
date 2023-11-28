@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sinensia.pollosprimos.backend.business.model.Cliente;
 import com.sinensia.pollosprimos.backend.business.services.ClienteServices;
+import com.sinensia.pollosprimos.backend.integration.model.ClientePL;
 import com.sinensia.pollosprimos.backend.integration.repositories.ClientePLRepository;
 
 @Service
@@ -34,8 +35,16 @@ public class ClienteServicesImpl implements ClienteServices {
 
 	@Override
 	public Optional<Cliente> read(Long id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		
+		Optional<ClientePL> optional = clientePLRepository.findById(id);
+		
+		Cliente cliente = null;
+		
+		if(optional.isPresent()) {
+			cliente = mapper.map(optional.get(), Cliente.class);
+		}
+		
+		return Optional.ofNullable(cliente);
 	}
 
 }
