@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.sinensia.pollosprimos.backend.business.model.Categoria;
+import com.sinensia.pollosprimos.backend.common.Pagina;
 
 public interface CategoriaServices {
 
@@ -11,5 +12,7 @@ public interface CategoriaServices {
 	Long create(Categoria categoria);
 	
 	List<Categoria> getAll();
+	
+	Pagina<Categoria> getPagina(int pageNumnber, int pageSize);
 	
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sinensia.pollosprimos.backend.business.model.Categoria;
 import com.sinensia.pollosprimos.backend.business.services.CategoriaServices;
+import com.sinensia.pollosprimos.backend.common.Pagina;
 import com.sinensia.pollosprimos.backend.integration.model.CategoriaPL;
 import com.sinensia.pollosprimos.backend.integration.repositories.CategoriaPLRepository;
 
@@ -61,5 +62,11 @@ public class CategoriaServicesImpl implements CategoriaServices {
 		return categoriaPLRepository.findAll().stream()
 				.map(x -> mapper.map(x, Categoria.class))
 				.toList();
+	}
+
+	@Override
+	public Pagina<Categoria> getPagina(int pageNumnber, int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

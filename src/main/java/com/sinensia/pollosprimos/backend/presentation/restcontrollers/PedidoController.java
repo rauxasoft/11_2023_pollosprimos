@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.sinensia.pollosprimos.backend.business.model.Pedido;
 import com.sinensia.pollosprimos.backend.business.services.PedidoServices;
+import com.sinensia.pollosprimos.backend.common.Pagina;
 import com.sinensia.pollosprimos.backend.presentation.config.PresentationException;
 
 @RestController
@@ -59,6 +61,13 @@ public class PedidoController {
 				
 		return ResponseEntity.created(ucb.path("/pedido/{numero}").build(numero))
 								.build();
+	}
+	
+	@GetMapping("/pagina")
+	public Pagina<Pedido> getPagina(@RequestParam("page-number") Integer pageNumber,
+									   @RequestParam("page-size") Integer pageSize){
+		// TODO
+		return null;
 	}
 	
 }

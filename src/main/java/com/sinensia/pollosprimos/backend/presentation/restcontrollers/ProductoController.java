@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sinensia.pollosprimos.backend.business.model.Producto;
 import com.sinensia.pollosprimos.backend.business.services.ProductoServices;
+import com.sinensia.pollosprimos.backend.common.Pagina;
 import com.sinensia.pollosprimos.backend.presentation.config.PresentationException;
 
 @RestController
@@ -51,6 +52,13 @@ public class ProductoController {
 		}
 		
 		return productos;
+	}
+	
+	@GetMapping("/pagina")
+	public Pagina<Producto> getPagina(@RequestParam("page-number") Integer pageNumber,
+									  @RequestParam("page-size") Integer pageSize){
+		// TODO
+		return null;
 	}
 	
 }

@@ -9,6 +9,7 @@ import com.sinensia.pollosprimos.backend.business.model.Categoria;
 import com.sinensia.pollosprimos.backend.business.model.Producto;
 import com.sinensia.pollosprimos.backend.business.model.dtos.EstadisticaDTO1;
 import com.sinensia.pollosprimos.backend.business.model.dtos.EstadisticaDTO2;
+import com.sinensia.pollosprimos.backend.common.Pagina;
 
 public interface ProductoServices {
 
@@ -86,6 +87,8 @@ public interface ProductoServices {
 	 * ...
 	 */
 	Map<Categoria, Double> getEstadisticaPrecioMedioProductosPorCategoria();
+	
+	Pagina<Producto> getPagina(int pageNumnber, int pageSize);
 	
 	// ********************************************************
 	//

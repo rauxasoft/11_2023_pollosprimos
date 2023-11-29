@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.sinensia.pollosprimos.backend.business.model.Cliente;
 import com.sinensia.pollosprimos.backend.business.model.Pedido;
 import com.sinensia.pollosprimos.backend.business.services.PedidoServices;
+import com.sinensia.pollosprimos.backend.common.Pagina;
 import com.sinensia.pollosprimos.backend.integration.model.ClientePL;
 import com.sinensia.pollosprimos.backend.integration.model.EstadoPedidoPL;
 import com.sinensia.pollosprimos.backend.integration.model.PedidoPL;
@@ -182,6 +183,12 @@ public class PedidoServicesImpl implements PedidoServices {
 		
 	}
 	
+	@Override
+	public Pagina<Pedido> getPagina(int pageNumnber, int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	// ********************************************************
 	//
 	// Private Methods
@@ -198,4 +205,5 @@ public class PedidoServicesImpl implements PedidoServices {
 		
 		return optional.get();
 	}
+
 }

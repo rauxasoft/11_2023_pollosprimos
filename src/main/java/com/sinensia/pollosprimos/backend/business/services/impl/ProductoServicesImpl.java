@@ -16,6 +16,7 @@ import com.sinensia.pollosprimos.backend.business.model.Producto;
 import com.sinensia.pollosprimos.backend.business.model.dtos.EstadisticaDTO1;
 import com.sinensia.pollosprimos.backend.business.model.dtos.EstadisticaDTO2;
 import com.sinensia.pollosprimos.backend.business.services.ProductoServices;
+import com.sinensia.pollosprimos.backend.common.Pagina;
 import com.sinensia.pollosprimos.backend.integration.model.CategoriaPL;
 import com.sinensia.pollosprimos.backend.integration.model.ProductoPL;
 import com.sinensia.pollosprimos.backend.integration.repositories.ProductoPLRepository;
@@ -178,6 +179,12 @@ public class ProductoServicesImpl implements ProductoServices {
 	}
 	
 	@Override
+	public Pagina<Producto> getPagina(int pageNumnber, int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public List<EstadisticaDTO1> getEstadisticasDTO1() {
 		
 		Map<Categoria, Integer> estadistica = getEstadisticaNumeroProductoPorCategoria();
@@ -218,4 +225,5 @@ public class ProductoServicesImpl implements ProductoServices {
 				.map(x -> mapper.map(x, Producto.class))
 				.toList();
 	}
+	
 }

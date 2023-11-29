@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.sinensia.pollosprimos.backend.business.model.Pedido;
+import com.sinensia.pollosprimos.backend.common.Pagina;
 
 public interface PedidoServices {
 	
@@ -54,4 +55,7 @@ public interface PedidoServices {
 	 */
 	void cancelar(Long numero);
 	
+	
+	public Pagina<Pedido> getPagina(int pageNumnber, int pageSize);
+		
 }
