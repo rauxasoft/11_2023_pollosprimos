@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Pollos Primos</title>
+	<th:block th:insert="common-in-head.html"></th:block>
+</head>
+<body>
+	<div class="container-fluid">
+		<header th:insert="header.html"></header>
+		<h2>Camarero</h2>
+		<p th:text="${mensajeError}" style="color:red;"></p>
+		<div th:if="${mensajeError == null}">
+			<table class="table">
+				<tr>
+					<th>Id</th>
+					<td th:text="${camarero.id}"></td>
+				</tr>
+				<tr>
+					<th>DNI</th>
+					<td th:text="${camarero.dni}"></td>
+				</tr>
+				<tr>
+					<th>Nombre completo</th>
+					<td th:text="${camarero.apellido1} + ' ' + ${camarero.apellido2} + ', ' + ${camarero.nombre}"></td>
+				</tr>
+				<tr>
+					<th>Domicilio</th>
+					<td th:text="${camarero.direccion.domicilio}"></td>
+				</tr>
+				<tr>
+					<th>Poblacion</th>
+					<td th:text="${camarero.direccion.poblacion}"></td>
+				</tr>
+				<tr>
+					<th>Codigo Postal</th>
+					<td th:text="${camarero.direccion.codigoPostal}"></td>
+				</tr>
+				<tr>
+					<th>Provincia</th>
+					<td th:text="${camarero.direccion.provincia}"></td>
+				</tr>
+				<tr>
+					<th>Pais</th>
+					<td th:text="${camarero.direccion.pais}"></td>
+				</tr>
+				<tr>
+					<th>Telefono</th>
+					<td th:text="${camarero.datosContacto.telefono}"></td>
+				</tr>
+				<tr>
+					<th>Fax</th>
+					<td th:text="${camarero.datosContacto.fax}"></td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td th:text="${camarero.datosContacto.email}"></td>
+				</tr>
+				<tr>
+					<th>Licencia de manipulador de alimentos</th>
+					<td th:text="${camarero.licenciaManipuladorAlimentos}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

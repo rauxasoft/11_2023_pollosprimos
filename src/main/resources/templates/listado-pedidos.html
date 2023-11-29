@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Pollos Primos</title>
+	<th:block th:insert="common-in-head.html"></th:block>
+</head>
+<body>
+	<div class="container-fluid">
+		<header th:insert="header.html"></header>
+		<h2>Listado de Pedidos</h2>
+		<table class="table">
+			<caption>Listado de Pedidos</caption>
+			<thead>
+				<tr>
+					<th>Número</th>
+					<th>Fecha</th>
+					<th>Hora</th>
+					<th>Camarero</th>
+					<th>Estado</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr th:each="pedido: ${pedidos}">
+					<td><a th:href="@{'pedidos'(numero=${pedido.numero})}" th:text="${pedido.numero}"></a></td>
+					<td th:text="${#dates.format(pedido.fecha, 'dd-MM-yyyy')}"></td>
+					<td th:text="${#dates.format(pedido.fecha, 'HH:mm')}"></td>
+					<td th:text="${pedido.camarero.apellido1} + ' ' + ${pedido.camarero.apellido2} + ', ' + ${pedido.camarero.nombre}"></td>
+					<td th:text="${pedido.estado}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

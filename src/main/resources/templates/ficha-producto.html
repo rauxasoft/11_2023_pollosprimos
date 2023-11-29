@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Pollos Primos</title>
+	<th:block th:insert="common-in-head.html"></th:block>
+</head>
+<body>
+	<div class="container-fluid">
+		<header th:insert="header.html"></header>
+		<h2 th:if="${modo eq 'alta'}">Alta de Producto</h2>
+		<h2 th:if="${modo eq 'editar'}">Edicion de Producto</h2>
+		<form action="#" th:action="@{/app/procesar-formulario-producto}" th:object="${producto}" method="POST" >
+			<input type="hidden" th:value="${producto.codigo}" th:name="codigo"/>
+			<table>
+				<tr>
+					<th>Nombre</th>
+					<td><input type="text" th:value="${producto.nombre}" th:name="nombre"/></td>
+				</tr>
+				<tr>
+					<th>Precio</th>
+					<td><input type="text" th:value="${producto.precio}" th:name="precio"/></td>
+				</tr>
+				<tr>
+					<th>Fecha de Alta</th>
+					<td><input type="date" th:field="${producto.fechaAlta}" th:name="fechaAlta"/></td>
+				</tr>
+				<tr>
+					<th>Descripción</th>
+					<td><input type="text" th:value="${producto.descripcion}" th:name="descripcion"/></td>
+				</tr>
+				<tr>
+					<th>Categoría</th>
+					<td><select th:field="*{categoria.id}">
+							<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>Descatalogado</th>
+					<td><input type="checkbox" th:checked="${producto.descatalogado}"/></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td style="text-align:right;">
+						<input th:if="${modo eq 'alta'}" type="submit" th:value="CREAR"/>
+						<input th:if="${modo eq 'editar'}" type="submit" th:value="EDITAR"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

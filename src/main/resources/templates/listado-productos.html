@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Pollos Primos</title>
+	<th:block th:insert="common-in-head.html"></th:block>
+</head>
+<body>
+	<div class="container-fluid">
+		<header th:insert="header.html"></header>
+		<h2>Listado de Productos</h2>
+		<table class="table">
+			<caption>Listado de Productos</caption>
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Fecha de Alta</th>
+					<th style="text-align: right;">Precio</th>
+					<th>Nombre</th>
+					<th>Categoría</th>
+					<th>Descripción</th>
+					<th>Descatalogado</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr th:each="producto: ${productos}">
+				<td><a th:href="@{'productos'(codigo=${producto.codigo})}" th:text="${producto.codigo}"></a></td>
+				<td th:text="${#dates.format(producto.fechaAlta, 'dd-MM-yyyy')}"></td>
+				<td th:text="${producto.precio} + ' €'" style="text-align: right;"></td>
+				<td th:text="${producto.nombre}"></td>
+				<td th:text="${producto.categoria.nombre}"></td>
+				<td th:text="${producto.descripcion}"></td>
+				<td><span th:if="${producto.descatalogado}" style="color:red;">DESCATALOGADO</span></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
