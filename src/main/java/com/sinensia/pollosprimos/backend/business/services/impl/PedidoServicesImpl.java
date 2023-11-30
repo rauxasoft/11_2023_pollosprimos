@@ -8,16 +8,20 @@ import java.util.Set;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.pollosprimos.backend.business.model.Cliente;
 import com.sinensia.pollosprimos.backend.business.model.Pedido;
 import com.sinensia.pollosprimos.backend.business.services.PedidoServices;
+import com.sinensia.pollosprimos.backend.common.PageToPaginaConverter;
 import com.sinensia.pollosprimos.backend.common.Pagina;
 import com.sinensia.pollosprimos.backend.integration.model.ClientePL;
 import com.sinensia.pollosprimos.backend.integration.model.EstadoPedidoPL;
 import com.sinensia.pollosprimos.backend.integration.model.PedidoPL;
+import com.sinensia.pollosprimos.backend.integration.repositories.PedidoPLPagingRepostiry;
 import com.sinensia.pollosprimos.backend.integration.repositories.PedidoPLRepository;
 
 import jakarta.transaction.Transactional;
@@ -26,11 +30,15 @@ import jakarta.transaction.Transactional;
 public class PedidoServicesImpl implements PedidoServices {
 
 	private PedidoPLRepository pedidoPLRepository;
+	private PedidoPLPagingRepostiry pedidoPLPagingRepository;
 	private DozerBeanMapper mapper;
 	
 	@Autowired
-	public PedidoServicesImpl(PedidoPLRepository pedidoPLRepository, DozerBeanMapper mapper ) {
+	public PedidoServicesImpl(PedidoPLRepository pedidoPLRepository, 
+							  PedidoPLPagingRepostiry pedidoPLPagingRepository, 
+							  DozerBeanMapper mapper ) {
 		this.pedidoPLRepository = pedidoPLRepository;
+		this.pedidoPLPagingRepository = pedidoPLPagingRepository;
 		this.mapper = mapper;
 	}
 	
@@ -184,9 +192,17 @@ public class PedidoServicesImpl implements PedidoServices {
 	}
 	
 	@Override
-	public Pagina<Pedido> getPagina(int pageNumnber, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+	public Pagina<Pedido> getPagina(int pageNumber, int pageSize) {
+		
+		Page<PedidoPL> page = pedidoPLPagingRepository.findAll(PageRequest.of(pageNumber, pageSize));
+		
+		PageToPaginaConverter<Pedido> conversor = new PageToPaginaConverter<>();
+		
+		List<Pedido> pedidos = page.getContent().stream()
+										.map(x -> mapper.map(x, Pedido.class))
+										.toList();
+		
+		return conversor.convert(page, pedidos);
 	}
 	
 	// ********************************************************

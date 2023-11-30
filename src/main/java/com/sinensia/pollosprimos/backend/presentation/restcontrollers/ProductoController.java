@@ -57,8 +57,8 @@ public class ProductoController {
 	@GetMapping("/pagina")
 	public Pagina<Producto> getPagina(@RequestParam("page-number") Integer pageNumber,
 									  @RequestParam("page-size") Integer pageSize){
-		// TODO
-		return null;
+
+		return productoServices.getPagina(pageNumber, pageSize);
 	}
 	
 }

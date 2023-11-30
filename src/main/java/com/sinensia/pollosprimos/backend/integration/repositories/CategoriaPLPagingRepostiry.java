@@ -6,6 +6,4 @@ import com.sinensia.pollosprimos.backend.integration.model.CategoriaPL;
 
 public interface CategoriaPLPagingRepostiry extends PagingAndSortingRepository<CategoriaPL, Long> {
 
-	
-	
 }

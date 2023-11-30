@@ -5,12 +5,16 @@ import java.util.Optional;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.pollosprimos.backend.business.model.Categoria;
 import com.sinensia.pollosprimos.backend.business.services.CategoriaServices;
+import com.sinensia.pollosprimos.backend.common.PageToPaginaConverter;
 import com.sinensia.pollosprimos.backend.common.Pagina;
 import com.sinensia.pollosprimos.backend.integration.model.CategoriaPL;
+import com.sinensia.pollosprimos.backend.integration.repositories.CategoriaPLPagingRepostiry;
 import com.sinensia.pollosprimos.backend.integration.repositories.CategoriaPLRepository;
 
 import jakarta.transaction.Transactional;
@@ -19,11 +23,16 @@ import jakarta.transaction.Transactional;
 public class CategoriaServicesImpl implements CategoriaServices {
 	
 	private CategoriaPLRepository categoriaPLRepository;
+	private CategoriaPLPagingRepostiry categoriaPLPagingRepostiry;
 	private DozerBeanMapper mapper;
 	
 	@Autowired
-	public CategoriaServicesImpl(CategoriaPLRepository categoriaPLRepository, DozerBeanMapper mapper) {
+	public CategoriaServicesImpl(CategoriaPLRepository categoriaPLRepository,
+								 CategoriaPLPagingRepostiry categoriaPLPagingRepostiry,
+								 DozerBeanMapper mapper) {
+		
 		this.categoriaPLRepository = categoriaPLRepository;
+		this.categoriaPLPagingRepostiry = categoriaPLPagingRepostiry;
 		this.mapper = mapper;
 	}
 	
@@ -63,10 +72,20 @@ public class CategoriaServicesImpl implements CategoriaServices {
 				.map(x -> mapper.map(x, Categoria.class))
 				.toList();
 	}
-
+	
 	@Override
-	public Pagina<Categoria> getPagina(int pageNumnber, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+	public Pagina<Categoria> getPagina(int pageNumber, int pageSize) {
+		
+		Page<CategoriaPL> page = categoriaPLPagingRepostiry.findAll(PageRequest.of(pageNumber, pageSize));
+		
+		PageToPaginaConverter<Categoria> conversor = new PageToPaginaConverter<>();
+		
+		List<Categoria> categorias = page.getContent().stream()
+										.map(x -> mapper.map(x, Categoria.class))
+										.toList();
+		
+		return conversor.convert(page, categorias);
+		
 	}
+
 }

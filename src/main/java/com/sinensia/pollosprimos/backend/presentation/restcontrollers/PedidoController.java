@@ -66,8 +66,8 @@ public class PedidoController {
 	@GetMapping("/pagina")
 	public Pagina<Pedido> getPagina(@RequestParam("page-number") Integer pageNumber,
 									   @RequestParam("page-size") Integer pageSize){
-		// TODO
-		return null;
+		
+		return pedidoServices.getPagina(pageNumber, pageSize);
 	}
 	
 }

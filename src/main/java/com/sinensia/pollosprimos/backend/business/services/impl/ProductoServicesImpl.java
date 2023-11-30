@@ -9,6 +9,8 @@ import java.util.Optional;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.pollosprimos.backend.business.model.Categoria;
@@ -16,9 +18,11 @@ import com.sinensia.pollosprimos.backend.business.model.Producto;
 import com.sinensia.pollosprimos.backend.business.model.dtos.EstadisticaDTO1;
 import com.sinensia.pollosprimos.backend.business.model.dtos.EstadisticaDTO2;
 import com.sinensia.pollosprimos.backend.business.services.ProductoServices;
+import com.sinensia.pollosprimos.backend.common.PageToPaginaConverter;
 import com.sinensia.pollosprimos.backend.common.Pagina;
 import com.sinensia.pollosprimos.backend.integration.model.CategoriaPL;
 import com.sinensia.pollosprimos.backend.integration.model.ProductoPL;
+import com.sinensia.pollosprimos.backend.integration.repositories.ProductoPLPagingRepostiry;
 import com.sinensia.pollosprimos.backend.integration.repositories.ProductoPLRepository;
 
 import jakarta.transaction.Transactional;
@@ -27,11 +31,15 @@ import jakarta.transaction.Transactional;
 public class ProductoServicesImpl implements ProductoServices {
 	
 	private ProductoPLRepository productoPLRepository;
+	private ProductoPLPagingRepostiry productoPLPagingRepository;
 	private DozerBeanMapper mapper;
 	
 	@Autowired
-	public ProductoServicesImpl(ProductoPLRepository productoPLRepository, DozerBeanMapper mapper ) {
+	public ProductoServicesImpl(ProductoPLRepository productoPLRepository, 
+								ProductoPLPagingRepostiry productoPLPagingRepository, 
+								DozerBeanMapper mapper ) {
 		this.productoPLRepository = productoPLRepository;
+		this.productoPLPagingRepository = productoPLPagingRepository;
 		this.mapper = mapper;
 	}
 	
@@ -179,9 +187,17 @@ public class ProductoServicesImpl implements ProductoServices {
 	}
 	
 	@Override
-	public Pagina<Producto> getPagina(int pageNumnber, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+	public Pagina<Producto> getPagina(int pageNumber, int pageSize) {
+
+		Page<ProductoPL> page = productoPLPagingRepository.findAll(PageRequest.of(pageNumber, pageSize));
+		
+		PageToPaginaConverter<Producto> conversor = new PageToPaginaConverter<>();
+		
+		List<Producto> productos = page.getContent().stream()
+										.map(x -> mapper.map(x, Producto.class))
+										.toList();
+		
+		return conversor.convert(page, productos);
 	}
 	
 	@Override

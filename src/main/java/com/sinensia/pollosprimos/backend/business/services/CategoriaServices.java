@@ -13,6 +13,6 @@ public interface CategoriaServices {
 	
 	List<Categoria> getAll();
 	
-	Pagina<Categoria> getPagina(int pageNumnber, int pageSize);
+	Pagina<Categoria> getPagina(int pageNumber, int pageSize);
 	
 }
